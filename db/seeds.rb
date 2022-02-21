@@ -87,13 +87,13 @@ tool.save!
 puts "created tool: #{tool.name}"
 
 user = User.find_by(first_name: 'Julia')
-tool = Tool.new(name: "tournevis",
-                category: "travaux",
-                sub_category: "travaux3",
-                daily_price: 1,
-                description: "Permet de visser et aussi de dévisser!",
-                condition: 1,
-                available: false
+tool = Tool.new(name: "pelle",
+                category: "jardin",
+                sub_category: "jardin2",
+                daily_price: 5,
+                description: "toute belle",
+                condition: 4,
+                available: true
                )
 tool.user = user
 tool.save!
