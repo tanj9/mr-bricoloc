@@ -108,7 +108,7 @@ booking = Booking.new(user: julia,
                       tool: marcel.tools.first,
                       date_begin: "01/03/2022",
                       date_end: "02/03/2022",
-                      # total_price: 2 * marcel.tools.first.daily_price,
+                      total_price: 2 * marcel.tools.first.daily_price,
                       status: "pending"
                      )
 booking.save!
@@ -118,7 +118,7 @@ booking = Booking.new(user: nicolas,
                       tool: marcel.tools.last,
                       date_begin: "02/03/2022",
                       date_end: "10/03/2022",
-                      # total_price: 9 * marcel.tools.last.daily_price,
+                      total_price: 9 * marcel.tools.last.daily_price,
                       status: "pending"
                      )
 booking.save!
@@ -128,7 +128,7 @@ booking = Booking.new(user: nicolas,
                       tool: julia.tools.last,
                       date_begin: "06/03/2022",
                       date_end: "10/03/2022",
-                      # total_price: 5 * julia.tools.last.daily_price,
+                      total_price: 5 * julia.tools.last.daily_price,
                       status: "validated"
                      )
 booking.save!
