@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>hello new tool</h1>
+  <%= simple_form_for @tool do |f| %>
+    <%= f.input :name %>
+    <%= f.input :category, collection: Tool::CATEGORIES.keys %>
+    <%= f.input :description %>
+    <%= f.input :daily_price %>
+    <%= f.input :condition %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
