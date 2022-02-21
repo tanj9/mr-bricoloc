@@ -134,6 +134,6 @@ booking = Booking.new(user: nicolas,
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
 
-puts "created #{booking.count} bookings"
+puts "created #{Booking.count} bookings"
 
 puts "DONE SEEDING"
