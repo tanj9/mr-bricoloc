@@ -1,7 +1,7 @@
 class ToolsController < ApplicationController
 
   def index
-    @tools = Tool.all
+    @tools = policy_scope(Tool).order(created_at: :desc)
   end
 
   def new
