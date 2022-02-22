@@ -1,8 +1,12 @@
 <div class="container">
   <h1>Details of the Booking</h1>
-  <p>From <%= @booking.date_begin %> to <%= @booking.date_end %>,</p>
-  <p>Your <%= @booking.tool.name %> has been booked by :</p>
-  <p><%= @booking.user.first_name %> <%= @booking.user.last_name%> (<%= @booking.user.email %>)</p>
-  
-  It is currently <%= @booking.status %>, do you wish to <%= link_to  "update", edit_booking_path(@booking)%> ?
+  <p>From <strong><%= @booking.date_begin.strftime("%d/%m/%Y") %></strong> to <strong><%= @booking.date_end.strftime("%d/%m/%Y") %></strong>,</p>
+  <p>Your <strong><%= @booking.tool.name %></strong> has been booked by :</p>
+  <p><%= @booking.user.first_name %> <%= @booking.user.last_name%> (<strong><%= @booking.user.email %></strong>)</p>
+
+  It is currently <strong><%= @booking.status %></strong>,  do you wish to <%= link_to  "update", edit_booking_path(@booking)%> ?
+
+  <p><%= link_to bookings_path do%>
+  <div class="btn btn-primary">Back to List</div>
+  <%end%></p>
 </div>

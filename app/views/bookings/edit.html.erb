@@ -1,8 +1,8 @@
 <div class="page-wrapper">
   <h1>Change the booking for this <%=@booking.tool.name%></h1>
   <%= simple_form_for @booking do |f| %>
-    <%= f.input :date_begin %>
-    <%= f.input :date_end %>
+    <%= f.input :date_begin, as: :date, html5: true %>
+    <%= f.input :date_end, as: :date, html5: true %>
     <%= f.input :status, collection: Booking::STATUSES%>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
