@@ -1,9 +1,8 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
-    def resolve
-      scope.all
-    end
+    # def resolve
+    # end
   end
 
   def new?
@@ -11,10 +10,22 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    true
   end
 
   def show?
-    raise
+    # true (i.e. authorized) if
+    # 1. user is the booking user (record.user)
+    # OR
+    # 2. user is the owner of the booked tool (record.tool.user)
+    (user == record.tool.user) || (user == record.user)
+  end
+
+  def edit?
+    update?
+  end
+
+  def update
+    show?
   end
 end
