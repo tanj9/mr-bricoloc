@@ -2,7 +2,7 @@
   <h1>Your Bookings</h1>
   <ul>
     <% @user_bookings.each do |booking| %>
-      <li><i class="fas fa-trash"></i><%= booking.tool.name %> - <%= booking.date_begin %> <%= booking.date_end %> - <%= booking.total_price %> EUR
+      <li><%= booking.tool.name %> - from <%= booking.date_begin.strftime("%d/%m/%Y") %> to <%= booking.date_end.strftime("%d/%m/%Y") %> - <%= booking.total_price %> EUR
        - <%= booking.status %> <%= link_to "View", booking_path(booking) %></li>
     <% end %>
   </ul>
@@ -11,7 +11,7 @@
   <ul>
     <% @owner_bookings.each do |booking| %>
       <li>
-        <%= booking.tool.name %> - <%= booking.date_begin %> <%= booking.date_end %> - <%= booking.total_price %> EUR
+        <%= booking.tool.name %> - <%= booking.date_begin.strftime("%d/%m/%Y") %> to <%= booking.date_end.strftime("%d/%m/%Y") %> - <%= booking.total_price %> EUR
         - <%= booking.status %>
         <%= link_to booking_path(booking) do %>
           <i class="fas fa-eye"></i>
