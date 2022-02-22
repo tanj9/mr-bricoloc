@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
 
 def index
-  @bookings = Booking.all
+  @bookings = policy_scope(Booking).order(created_at: :desc)
 end
 
 def show
@@ -11,6 +11,7 @@ end
 def new
   @tool = Tool.find(params[:tool_id])
   @booking = Booking.new
+  authorize @booking
 end
 
 def create
