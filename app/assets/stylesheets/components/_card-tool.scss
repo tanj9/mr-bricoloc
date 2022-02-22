@@ -12,6 +12,10 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
+
+  &:after {
+    content: "coucou";
+  }
 }
 
 .card-trip h2 {

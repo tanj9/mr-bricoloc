@@ -3,20 +3,21 @@
     <h1>Which tool do you need?</h1>
   </div>
   <div class="cards-container">
+  <%# ajouter display grid avec grip gap et column template %>
+  <%# on retire row et col %>
     <div class="row">
       <% @tools.each do |tool| %>
           <div class="col-4 mb-4">
             <%= link_to tool_path(tool) do %>
               <div class="card-trip">
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                <%# <%= cl_image_tag tool.photo.key %> %>
+                <%= cl_image_tag tool.photo.key %>
                 <div class="card-trip-infos">
                   <div>
                     <h2><%= tool.name %></h2>
                     <p><%= tool.description %></p>
                   </div>
                 <h2 class="card-trip-pricing"><%= tool.daily_price %> €</h2>
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                <%= cl_image_tag(tool.user.photo.key, :class => "card-trip-user avatar-bordered") %>
                 </div>
               </div>
             <% end %>
