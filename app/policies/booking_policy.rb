@@ -25,7 +25,7 @@ class BookingPolicy < ApplicationPolicy
     update?
   end
 
-  def update
+  def update?
     show?
   end
 end
