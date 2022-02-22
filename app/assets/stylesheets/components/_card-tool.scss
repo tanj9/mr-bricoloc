@@ -2,7 +2,6 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 350px;
   height: 300px;
   color: $taupe;
   border-radius: 4px;
@@ -12,21 +11,22 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
-
-  &:after {
-    content: "coucou";
-  }
 }
 
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  &.card-trip-pricing {
+    min-width: 40px;
+    text-align: end;
+  }
 }
 
 .card-trip p {
   font-size: 12px;
   opacity: .7;
+  max-width: 80%;
   margin: 0;
 }
 
@@ -51,6 +51,25 @@
 }
 
 .cards-container {
-  width: 78vw;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
 }
+
+// @media(max-width: 992px) {
+//   .cards-container {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
+
+// @media(max-width: 768px) {
+//   .cards-container {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
+
+// @media(max-width: 425px) {
+//   .cards-container {
+//     grid-template-columns: 1fr;
+//   }
+// }
