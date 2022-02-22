@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Details of the Booking</h1>
+  <p>From <%= @booking.date_begin %> to <%= @booking.date_end %>,</p>
+  <p>Your <%= @booking.tool.name %> has been booked by :</p>
+  <p><%= @booking.user.first_name %> <%= @booking.user.last_name%> (<%= @booking.user.email %>)</p>
+  
+  It is currently <%= @booking.status %>, do you wish to <%= link_to  "update", edit_booking_path(@booking)%> ?
+</div>
