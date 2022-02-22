@@ -25,6 +25,23 @@ class ToolsController < ApplicationController
     end
   end
 
+  def edit
+    @tool = Tool.find(params[:id])
+    authorize @tool
+  end
+
+  def update
+    @tool = Tool.find(params[:id])
+    authorize @tool
+    @tool = Tool.update(tool_params)
+  end
+
+  def destroy
+    @tool = Tool.find(params[:id])
+    authorize @tool
+    @tool.destroy
+  end
+
   private
 
   def tool_params
