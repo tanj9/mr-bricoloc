@@ -2,10 +2,12 @@ class BookingsController < ApplicationController
 
 def index
   @bookings = policy_scope(Booking).order(created_at: :desc)
+  authorize @booking
 end
 
 def show
   @booking = Booking.find(params[:id])
+  authorize @booking
 end
 
 def new
@@ -21,6 +23,7 @@ def create
   @booking.tool = @tool
   @booking.status = "pending validation"
   @booking.total_price = (@booking.date_end - @booking.date_begin) * @tool.daily_price
+  authorize @booking
   if @booking.save
     redirect_to bookings_path
   else
