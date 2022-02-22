@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:show, :edit, :update]
+
   def index
     # @bookings = policy_scope(Booking).order(created_at: :desc)
     skip_policy_scope
@@ -7,7 +9,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
     authorize @booking
   end
 
@@ -33,16 +34,14 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    @booking = Booking.find(params[:id])
     @tool = @booking.tool
     authorize @booking
   end
 
   def update
-    @booking = Booking.find(params[:id])
     authorize @booking
     if @booking.update(booking_params)
-    redirect_to bookings_path
+      redirect_to bookings_path
     else
       render 'edit'
     end
@@ -51,7 +50,10 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-  params.require(:booking).permit(:date_begin, :date_end, :status, :total_price)
+    params.require(:booking).permit(:date_begin, :date_end, :status, :total_price)
   end
 
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 end
