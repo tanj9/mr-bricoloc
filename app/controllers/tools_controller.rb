@@ -1,4 +1,5 @@
 class ToolsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
     @tools = policy_scope(Tool).order(created_at: :desc)
