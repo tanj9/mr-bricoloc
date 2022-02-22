@@ -10,12 +10,18 @@ class ToolPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    create?
-  end
-
   def create?
     # all users can add a new tool
     true
+  end
+
+  def edit?
+    # seul le propriétaire du tool peut modifier
+    record.user == user
+  end
+
+  def destroy?
+    # seul le propriétaire du tool peut le supprimer
+    record.user == user
   end
 end
