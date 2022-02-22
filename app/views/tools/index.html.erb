@@ -3,11 +3,7 @@
     <h1>Which tool do you need?</h1>
   </div>
   <div class="cards-container">
-  <%# ajouter display grid avec grip gap et column template %>
-  <%# on retire row et col %>
-    <div class="row">
       <% @tools.each do |tool| %>
-          <div class="col-4 mb-4">
             <%= link_to tool_path(tool) do %>
               <div class="card-trip">
                 <%= cl_image_tag tool.photo.key %>
@@ -21,11 +17,6 @@
                 </div>
               </div>
             <% end %>
-          </div>
       <% end %>
-    </div>
   </div>
-  <% if policy(Tool).create? %>
-    <%= link_to "Add a new tool", new_tool_path, class: "btn btn-primary" %>
-  <% end %>
 </div>
