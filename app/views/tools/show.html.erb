@@ -1,21 +1,23 @@
-<div class="container col-6 offset3">
+<div class="page-wrapper">
+  <div class="container col-6 offset3">
 
-  <h2 class="text-center"><%= @tool.name.capitalize %></h2>
+    <h2 class="text-center"><%= @tool.name.capitalize %></h2>
 
-  <div class="text">
-    <p>Category: <%= @tool.category %></p>
-    <p>Description: <%= @tool.description %></p>
-    <p>daily_price: <%= @tool.daily_price %></p>
-    <p>Condition: <%= @tool.condition %>/5</p>
+    <div class="text">
+      <p>Category: <%= @tool.category %></p>
+      <p>Description: <%= @tool.description %></p>
+      <p>daily_price: <%= @tool.daily_price %></p>
+      <p>Condition: <%= @tool.condition %>/5</p>
+    </div>
+
+    <div class="tool_photo">
+      <%# photo_url %>
+    </div>
+
+    <%= link_to 'Back to list', tools_path, class: "btn btn-primary" %>
+
+    <% if policy(Booking).create? %>
+    <<%= link_to "New booking", new_tool_booking_path(@tool) %>
+    <% end %>
   </div>
-
-  <div class="tool_photo">
-    <%# photo_url %>
-  </div>
-
-  <%= link_to 'Back to list', tools_path, class: "btn btn-primary" %>
-
-  <% if policy(Booking).create? %>
-  <<%= link_to "New booking", new_tool_booking_path(@tool) %>
-  <% end %>
 </div>
