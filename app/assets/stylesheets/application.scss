@@ -11,3 +11,12 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  background-color: $grey;
+  color: $grey3;
+}
+
+.container {
+  background-color: $light;
+}

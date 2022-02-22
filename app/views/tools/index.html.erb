@@ -2,7 +2,9 @@
   <h1>List of all tools</h1>
   <ul>
   <% @tools.each do |tool| %>
-    <li><%= tool.name %></li>
+    <%= link_to tool_path(tool) do %>
+      <li><%= tool.name %></li>
+    <% end %>
   <% end %>
   </ul>
   <% if policy(Tool).create? %>
