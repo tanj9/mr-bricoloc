@@ -14,5 +14,4 @@ class ToolPolicy < ApplicationPolicy
     # all users can add a new tool
     true
   end
-
 end
