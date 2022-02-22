@@ -5,16 +5,16 @@ def index
 end
 
 def show
-  @booking = Booking.find(params[:booking_id])
+  @booking = Booking.find(params[:id])
 end
 
 def new
-  @tool = Tool.find(params[:id])
+  @tool = Tool.find(params[:tool_id])
   @booking = Booking.new
 end
 
 def create
-  @tool = Tool.find(params[:id])
+  @tool = Tool.find(params[:tool_id])
   @booking = Booking.new(booking_params)
   @booking.user = current_user
   @booking.tool = @tool
@@ -27,7 +27,7 @@ def create
 end
 
 def edit
-  @booking = Booking.find(params[:booking_id])
+  @booking = Booking.find(params[:id])
 end
 
 #def update
