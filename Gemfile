@@ -35,6 +35,7 @@ gem 'devise'
 gem 'pundit'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
