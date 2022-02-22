@@ -34,18 +34,24 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @tool = @booking.tool
+    authorize @booking
   end
 
-  #def update
-  #  @tool = Tool.find(params[:id])
-  #  @booking = Booking.find(params[:booking_id])
-  #  @booking.user = current_user
-  #  @booking.tool = @tool
-  #end
+  def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    if @booking.update(booking_params)
+    redirect_to bookings_path
+    else
+      render 'edit'
+    end
+  end
 
   private
 
   def booking_params
-  params.require(:booking).permit(:date_begin, :date_end)
+  params.require(:booking).permit(:date_begin, :date_end, :status, :total_price)
   end
+
 end

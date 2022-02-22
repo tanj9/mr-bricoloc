@@ -1,4 +1,5 @@
 class ToolsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
     @tools = policy_scope(Tool).order(created_at: :desc)
@@ -23,6 +24,23 @@ class ToolsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @tool = Tool.find(params[:id])
+    authorize @tool
+  end
+
+  def update
+    @tool = Tool.find(params[:id])
+    authorize @tool
+    @tool = Tool.update(tool_params)
+  end
+
+  def destroy
+    @tool = Tool.find(params[:id])
+    authorize @tool
+    @tool.destroy
   end
 
   private

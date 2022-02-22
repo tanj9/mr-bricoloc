@@ -16,6 +16,6 @@
   <%= link_to 'Back to list', tools_path, class: "btn btn-primary" %>
 
   <% if policy(Booking).create? %>
-  <%# <%= link_to "New booking", new_tool_booking_path %> %>
+  <<%= link_to "New booking", new_tool_booking_path(@tool) %>
   <% end %>
 </div>
