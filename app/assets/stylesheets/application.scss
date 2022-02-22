@@ -14,9 +14,13 @@
 
 body {
   background-color: $grey;
-  color: $grey3;
+  color: $taupe;
 }
 
-.container {
+.page-wrapper {
   background-color: $light;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80vw;
+  padding: 10px;
 }

@@ -2,7 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 400px;
+  width: 350px;
   height: 300px;
   color: $taupe;
   border-radius: 4px;
@@ -44,4 +44,9 @@
 
 .cards-container a {
   text-decoration: none;
+}
+
+.cards-container {
+  width: 78vw;
+  margin: 0 auto;
 }

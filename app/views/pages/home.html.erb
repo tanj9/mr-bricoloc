@@ -2,7 +2,7 @@
     <h1>Welcome to Mr.Bricoloc</h1>
     <p>Break the limitations to your inspiration </p>
 
-    <form novalidate="novalidate" class="simple_form search col-6 offset-3" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+    <form novalidate="novalidate" class="simple_form search col-6 offset-3" action="/tools" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
       <div class="search-form-control form-group">
         <input class="form-control string required" type="text" name="search[query]" id="search_query" />
         <button name="button" type="submit" class="btn btn-ghost">
@@ -11,7 +11,9 @@
       </div>
 </div>
 
-<div class="container w-75 p-3 d-flex justify-content-center">
-  <div class="m-2"><%= link_to 'View all tools', tools_path, :class => "btn btn-primary" %></div>
-  <div class="m-2"><%= link_to 'View all bookings', bookings_path, :class => "btn btn-primary" %></div>
+<div class="page-wrapper">
+  <div class="d-flex justify-content-center" style="height: 100px">
+    <div class="m-2"><%= link_to 'View all tools', tools_path, :class => "btn btn-primary" %></div>
+    <div class="m-2"><%= link_to 'View all bookings', bookings_path, :class => "btn btn-primary" %></div>
+  </div>
 </div>
