@@ -8,5 +8,5 @@ class Tool < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
 
-  validates :name, :category, :sub_category, :daily_price, :description, :condition, presence: true
+  validates :name, :category, :daily_price, :description, :condition, presence: true
 end
