@@ -19,6 +19,7 @@ def create
   @booking.user = current_user
   @booking.tool = @tool
   @booking.status = "pending validation"
+  @booking.total_price = (@booking.date_end - @booking.date_begin) * @tool.daily_price
   if @booking.save
     redirect_to bookings_path
   else
