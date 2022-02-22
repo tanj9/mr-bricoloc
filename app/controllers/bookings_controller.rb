@@ -6,6 +6,7 @@ end
 
 def show
   @booking = Booking.find(params[:id])
+  authorize @booking
 end
 
 def new
@@ -30,6 +31,7 @@ end
 
 def edit
   @booking = Booking.find(params[:id])
+  authorize @booking
 end
 
 #def update
