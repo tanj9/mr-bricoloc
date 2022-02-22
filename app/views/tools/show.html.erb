@@ -11,7 +11,7 @@
     </div>
 
     <div class="tool_photo">
-      <%# photo_url %>
+    <%= cl_image_tag @tool.photo.key %>
     </div>
 
     <%= link_to 'Back to list', tools_path, class: "btn btn-primary" %>
