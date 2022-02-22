@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Change the booking <%= @booking.id %> for this <%=@tool.name%></h1>
+  <%= simple_form_for [@tool, @booking] do |f| %>
+    <%= f.input :date_begin %>
+    <%= f.input :date_end %>
+    <%= f.input :status, collection: Booking::STATUSES%>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
