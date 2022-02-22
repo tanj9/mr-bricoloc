@@ -5,4 +5,7 @@
     <li><%= tool.name %></li>
   <% end %>
   </ul>
+  <% if policy(Tool).create? %>
+    <%= link_to "Add a new tool", new_tool_path, class: "btn btn-primary" %>
+  <% end %>
 </div>
