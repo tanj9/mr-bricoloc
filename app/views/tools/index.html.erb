@@ -1,12 +1,27 @@
 <div class="container">
   <h1>List of all tools</h1>
-  <ul>
-  <% @tools.each do |tool| %>
-    <%= link_to tool_path(tool) do %>
-      <li><%= tool.name %></li>
-    <% end %>
-  <% end %>
-  </ul>
+  <div class="cards-container">
+    <div class="row">
+      <% @tools.each do |tool| %>
+          <div class="col-4 mb-4">
+            <%= link_to tool_path(tool) do %>
+              <div class="card-trip">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                <%# <%= cl_image_tag tool.photo.key %> %>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= tool.name %></h2>
+                    <p><%= tool.description %></p>
+                  </div>
+                <h2 class="card-trip-pricing"><%= tool.daily_price %> €</h2>
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                </div>
+              </div>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+  </div>
   <% if policy(Tool).create? %>
     <%= link_to "Add a new tool", new_tool_path, class: "btn btn-primary" %>
   <% end %>
