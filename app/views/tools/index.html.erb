@@ -28,3 +28,5 @@
     <%= link_to "Add a new tool", new_tool_path, class: "btn btn-primary" %>
   <% end %>
 </div>
+
+<% if tool.user != current_user do%>
