@@ -4,6 +4,11 @@ class ToolsController < ApplicationController
     @tools = policy_scope(Tool).order(created_at: :desc)
   end
 
+  def show
+    @tool = Tool.find(params[:id])
+    authorize @tool
+  end
+
   def new
     @tool = Tool.new
     authorize @tool
