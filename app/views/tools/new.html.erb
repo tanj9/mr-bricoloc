@@ -1,12 +1,14 @@
-<div class="container">
-  <h1>hello new tool</h1>
-  <%= simple_form_for @tool do |f| %>
-    <%= f.input :name %>
-    <%= f.input :category, collection: Tool::CATEGORIES.keys %>
-    <%= f.input :description %>
-    <%= f.input :daily_price %>
-    <%= f.input :condition %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
+<div class="page-wrapper">
+  <div class="form-new">
+    <h1>Want to add a new tool to your toolbox?</h1>
+    <%= simple_form_for @tool do |f| %>
+      <%= f.input :name %>
+      <%= f.input :category, collection: Tool::CATEGORIES.keys %>
+      <%= f.input :description %>
+      <%= f.input :daily_price %>
+      <%= f.input :condition %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
