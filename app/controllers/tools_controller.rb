@@ -5,12 +5,14 @@ class ToolsController < ApplicationController
   #  @tools = policy_scope(Tool).order(created_at: :desc)
     skip_policy_scope
     @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
-    @tools = Tool.all.order(created_at: :desc)
+    @tools = Tool.all.where("name LIKE '%Drill%'")
   end
 
   def show
     @tool = Tool.find(params[:id])
     authorize @tool
+    @booking = Booking.new
+    authorize @booking
   end
 
   def new
