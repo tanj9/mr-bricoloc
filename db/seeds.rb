@@ -104,7 +104,7 @@ tool.save!
 puts "created tool: #{tool.name}"
 
 
-user = User.find_by(first_name: 'Marion')
+user = User.find_by(first_name: 'Adrien')
 tool = Tool.new(
   name: 'Shovel',
   category: 'garden',
@@ -135,7 +135,6 @@ tool.user = user
 tool.save!
 puts "created tool: #{tool.name}"
 
-user = User.find_by(first_name: 'Adrien')
 tool = Tool.new(
   name: 'Drill/Driver',
   category: 'works',
@@ -326,7 +325,7 @@ booking = Booking.new(
   date_begin: '01/03/2022',
   date_end: '02/03/2022',
   total_price: 2 * florent.tools.first.daily_price,
-  status: 'pending'
+  status: 'validated'
 )
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
@@ -343,11 +342,11 @@ booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
 
 booking = Booking.new(
-  user: adrien,
-  tool: marion.tools.last,
+  user: florent,
+  tool: adrien.tools.last,
   date_begin: '06/03/2022',
   date_end: '10/03/2022',
-  total_price: 5 * marion.tools.last.daily_price,
+  total_price: 5 * adrien.tools.last.daily_price,
   status: 'validated'
 )
 booking.save!
@@ -381,7 +380,7 @@ booking = Booking.new(
   date_begin: '05/03/2022',
   date_end: '07/03/2022',
   total_price: 3 * florent.tools.find_by(name: 'Two green screwdrivers').daily_price,
-  status: 'validated'
+  status: 'declined'
 )
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"

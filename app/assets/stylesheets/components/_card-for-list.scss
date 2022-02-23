@@ -44,9 +44,24 @@
 }
 
 .list-container-title {
-  background-color: $taupe;
-  text-align: center;
-  color: $light;
+  position: relative;
+  color: $taupe;
   padding: 5px;
   font-size : 21px;
+}
+
+.list-container-title a {
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  font-size : 21px;
+}
+
+.add-btn {
+  width: 25px;
+  text-align: center;
+  border: 1px black solid;
+  border-radius: 50px;
+  color: black;
 }
