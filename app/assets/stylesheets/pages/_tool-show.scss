@@ -1,0 +1,14 @@
+.booking-tool {
+  background-color: rgba($color: white , $alpha: 0.7);
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.tool-photo img {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  object-fit: cover;
+}

@@ -1,23 +1,27 @@
 <div class="page-wrapper">
-  <div class="container col-6 offset3">
-
-    <h2 class="text-center"><%= @tool.name.capitalize %></h2>
-
-    <div class="text">
-      <p>Category: <%= @tool.category %></p>
-      <p>Description: <%= @tool.description %></p>
-      <p>daily_price: <%= @tool.daily_price %></p>
-      <p>Condition: <%= @tool.condition %>/5</p>
+  <div class="container">
+    <div class="row mt-2">
+      <div class="col-9">
+        <div class="tool-photo">
+          <%= cl_image_tag @tool.photo.key %>
+        </div>
+        <div class="text m-4">
+          <h2 class="text-center"><%= @tool.name.capitalize %></h2>
+          <h4><%= @tool.description %></h4>
+          <p>Category: <%= @tool.category %></p>
+          <p>Price per day: <%= @tool.daily_price %> €</p>
+          <p>Condition: <%= @tool.condition %>/5</p>
+        </div>
+        <%= link_to 'Back to list', tools_path, class: "btn btn-primary" %>
+      </div>
+      <div class="booking-tool col-3">
+        <h4>Book this <%=@tool.name%></h4>
+        <%= simple_form_for [@tool, @booking] do |f| %>
+          <%= f.input :date_begin, as: :date, html5: true %>
+          <%= f.input :date_end, as: :date, html5: true%>
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
-
-    <div class="tool_photo">
-    <%= cl_image_tag @tool.photo.key %>
-    </div>
-
-    <%= link_to 'Back to list', tools_path, class: "btn btn-primary" %>
-
-    <% if policy(Booking).create? %>
-    <<%= link_to "New booking", new_tool_booking_path(@tool) %>
-    <% end %>
   </div>
 </div>
