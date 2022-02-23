@@ -25,7 +25,7 @@ class ToolsController < ApplicationController
     @tool.user = current_user
     authorize @tool
     if @tool.save!
-      redirect_to tools_path
+      redirect_to tool_path(@tool)
     else
       render :new
     end
