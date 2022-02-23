@@ -19,14 +19,14 @@
           <p>Price per day: <%= @tool.daily_price %> €</p>
           <p>Condition: <%= @tool.condition %>/5</p>
         </div>
-        <%= link_to 'Back to list', tools_path, class: "btn btn-primary" %>
+        <%= link_to 'Back to list', tools_path, class: "btn btn-ghost" %>
       </div>
       <div class="booking-tool col-3">
         <h4>Book this <%=@tool.name%></h4>
         <%= simple_form_for [@tool, @booking] do |f| %>
           <%= f.input :date_begin, as: :date, html5: true %>
           <%= f.input :date_end, as: :date, html5: true%>
-          <%= f.submit "Submit", class: "btn btn-primary" %>
+          <%= f.submit "Submit", class: "btn btn-ghost" %>
         <% end %>
       </div>
     </div>
