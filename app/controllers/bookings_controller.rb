@@ -58,6 +58,28 @@ class BookingsController < ApplicationController
     end
   end
 
+  def decline
+    set_booking
+    authorize @booking
+    @booking.status = 'validated'
+    if @booking.save
+      redirect_to bookings_path
+    else
+      render 'new'
+    end
+  end
+
+  def cancel
+    set_booking
+    authorize @booking
+    @booking.status = 'canceled'
+    if @booking.save
+      redirect_to bookings_path
+    else
+      render 'new'
+    end
+  end
+
   private
 
   def booking_params
