@@ -34,4 +34,34 @@
     <% end %>
   </ul>
 
+  <h1>The first booking of the owner is:</h1>
+    <% booking = @owner_bookings.first %>
+    <ul>
+      <li>
+        Tool: <%= booking.tool.name %>
+      </li>
+      <li>
+        Begin: <%= booking.date_begin.strftime("%d/%m/%Y") %>
+      </li>
+      <li>
+        End: <%= booking.date_end.strftime("%d/%m/%Y") %>
+      </li>
+      <li>
+        status: <%= booking.status %>
+      </li>
+      <li>
+        <%= booking.total_price %> EUR
+      </li>
+      <li>
+        Lien "accept":
+        <%= link_to 'accept', accept_booking_path(booking),
+          method: :patch
+        %>
+          <i class="fas fa-check"></i>
+      </li>
+      <li>
+        Lien "Decline":
+      </li>
+    </ul>
+
 </div>

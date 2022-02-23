@@ -28,4 +28,8 @@ class BookingPolicy < ApplicationPolicy
   def update?
     show?
   end
+
+  def accept?
+    user == record.tool.user
+  end
 end
