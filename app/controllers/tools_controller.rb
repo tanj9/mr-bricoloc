@@ -2,7 +2,9 @@ class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
-    @tools = policy_scope(Tool).order(created_at: :desc)
+    @tools = Tool.all.where("name LIKE '%Drill%'")
+    # @tools = policy_scope(Tool).order(created_at: :desc)
+    raise
   end
 
   def show
