@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   def index
     # @bookings = policy_scope(Booking).order(created_at: :desc)
     skip_policy_scope
-    @owner_bookings = Booking.joins(:tool).where(tool: { user: current_user })
+    @owner_bookings = Booking.joins(:tool).where(tool: { user: current_user }).order(created_at: :desc)
     @user_bookings = Booking.where(user: current_user)
     @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
   end
@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.tool = @tool
     @booking.status = "pending"
-    @booking.total_price = (@booking.date_end - @booking.date_begin) * @tool.daily_price
+    @booking.total_price = ((((@booking.date_end - @booking.date_begin).to_f / 60_000) + 1).floor * @tool.daily_price)
     authorize @booking
     if @booking.save
       redirect_to bookings_path
