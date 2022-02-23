@@ -326,7 +326,7 @@ booking = Booking.new(
   date_begin: '01/03/2022',
   date_end: '02/03/2022',
   total_price: 2 * florent.tools.first.daily_price,
-  status: 'pending validation'
+  status: 'pending'
 )
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
@@ -337,7 +337,7 @@ booking = Booking.new(
   date_begin: '02/03/2022',
   date_end: '10/03/2022',
   total_price: 9 * florent.tools.last.daily_price,
-  status: 'pending validation'
+  status: 'pending'
 )
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
@@ -359,7 +359,7 @@ booking = Booking.new(
   date_begin: '04/03/2022',
   date_end: '15/03/2022',
   total_price: 12 * florent.tools.find_by(name: 'Ripper').daily_price,
-  status: 'denied'
+  status: 'declined'
 )
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
@@ -370,7 +370,7 @@ booking = Booking.new(
   date_begin: '02/03/2022',
   date_end: '03/03/2022',
   total_price: 2 * florent.tools.find_by(name: 'Two green screwdrivers').daily_price,
-  status: 'pending validation'
+  status: 'pending'
 )
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"

@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-STATUSES = ["pending validation", "validated", "denied", "canceled"]
+STATUSES = ["pending", "validated", "declined", "cancelled"]
 
   belongs_to :tool
   belongs_to :user
