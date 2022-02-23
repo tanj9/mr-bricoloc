@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
     skip_policy_scope
     @owner_bookings = Booking.joins(:tool).where(tool: { user: current_user })
     @user_bookings = Booking.where(user: current_user)
+    @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
   end
 
   def show
