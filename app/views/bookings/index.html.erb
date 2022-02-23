@@ -2,7 +2,7 @@
 <h1 style = 'text-align: center; padding:10px'>Welcome <%=current_user.first_name%></h1>
 <div class="cards-container">
   <div class = "list-container">
-    <h2 class="list-container-title">Your Bookings</h2>
+    <h2  class="border-bottom list-container-title mb-3 pb-2">Your Bookings</h2>
       <% @user_bookings.each do |booking| %>
         <div class="card-for-list">
           <%= cl_image_tag booking.tool.photo.key %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class = "list-container">
-    <h2 class="list-container-title">Bookings for Your Tools</h2>
+    <h2 class="border-bottom list-container-title mb-3 pb-2">Bookings for Your Tools</h2>
     <% @owner_bookings.each do |booking| %>
       <div class="card-for-list">
         <%= cl_image_tag booking.tool.photo.key %>
@@ -50,7 +50,12 @@
   </div>
 
 <div class = "list-container">
-      <h2 class="list-container-title">Your toolbox</h2>
+      <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+        <h2 class="list-container-title mb-1">
+          Your toolbox
+        </h2>
+        <%= link_to '+', new_tool_path, class: "add-btn" %>
+      </div>
       <% @owner_tools.each do |tool| %>
         <div class="card-for-list">
           <%= cl_image_tag tool.photo.key %>
