@@ -33,4 +33,12 @@ class BookingPolicy < ApplicationPolicy
   def accept?
     user == record.tool.user
   end
+
+  def decline?
+    accept?
+  end
+
+  def cancel?
+    user == record.user
+  end
 end

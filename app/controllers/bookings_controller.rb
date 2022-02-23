@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.tool = @tool
-    @booking.status = "pending validation"
+    @booking.status = "pending"
     @booking.total_price = (@booking.date_end - @booking.date_begin) * @tool.daily_price
     authorize @booking
     if @booking.save
@@ -62,7 +62,7 @@ class BookingsController < ApplicationController
   def decline
     set_booking
     authorize @booking
-    @booking.status = 'validated'
+    @booking.status = 'declined'
     if @booking.save
       redirect_to bookings_path
     else
@@ -73,7 +73,7 @@ class BookingsController < ApplicationController
   def cancel
     set_booking
     authorize @booking
-    @booking.status = 'canceled'
+    @booking.status = 'cancelled'
     if @booking.save
       redirect_to bookings_path
     else
