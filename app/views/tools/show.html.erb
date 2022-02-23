@@ -2,8 +2,15 @@
   <div class="container">
     <div class="row mt-2">
       <div class="col-9">
-        <div class="tool-photo">
-          <%= cl_image_tag @tool.photo.key %>
+        <div class="pictures-tool">
+          <div class="small-pics">
+            <%= cl_image_tag(@tool.photo.key, :transformation => {:effect => "blur:300", :opacity => 70})%>
+            <%= cl_image_tag(@tool.photo.key, :transformation => {:effect => "blur:300", :opacity => 70})%>
+            <%= cl_image_tag @tool.photo.key %>
+          </div>
+          <div class="tool-photo">
+            <%= cl_image_tag(@tool.photo.key, :width => 700, :crop => "fit") %>
+          </div>
         </div>
         <div class="text m-4">
           <h2 class="text-center"><%= @tool.name.capitalize %></h2>
