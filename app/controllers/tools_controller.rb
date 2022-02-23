@@ -4,7 +4,6 @@ class ToolsController < ApplicationController
   def index
     @tools = Tool.all.where("name LIKE '%Drill%'")
     # @tools = policy_scope(Tool).order(created_at: :desc)
-    raise
   end
 
   def show
