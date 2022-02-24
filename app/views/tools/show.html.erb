@@ -5,7 +5,7 @@
         <div class="pictures-tool">
           <div class="small-pics">
             <%= cl_image_tag(@tool.photo.key, :transformation => {:effect => "blur:300", :opacity => 70})%>
-            <%= cl_image_tag(@tool.photo.key, :transformation => {:effect => "blur:300", :opacity => 70})%>
+            <%= cl_image_tag(@tool.photo.key, :transformation => {:effect => "blur:300", :opacity => 70}) %>
             <%= cl_image_tag @tool.photo.key %>
           </div>
           <div class="tool-photo">
