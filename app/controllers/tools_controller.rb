@@ -5,6 +5,7 @@ class ToolsController < ApplicationController
   #  @tools = policy_scope(Tool).order(created_at: :desc)
     skip_policy_scope
     @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
+    @search_params = {}
     if search_params.present?
       @search_params = search_params
       @tools = filter_tools
@@ -77,12 +78,14 @@ class ToolsController < ApplicationController
   end
 
   def search_params
-    params.require(:search).permit(
-      :query,
-      :max_price,
-      :category,
-      :distance
-    )
+    if params[:search]
+      params.require(:search).permit(
+        :query,
+        :max_price,
+        :category,
+        :distance
+      )
+    end
   end
 
   def filter_tools
