@@ -5,8 +5,10 @@ class ToolsController < ApplicationController
   #  @tools = policy_scope(Tool).order(created_at: :desc)
     skip_policy_scope
     @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
-    if params[:search]["query"].present?
-      @tools = Tool.all.where("name ILIKE ?", "%#{params[:search][:query]}%")
+    @search_params = {}
+    if search_params.present?
+      @search_params = search_params
+      @tools = filter_tools
     else
       @tools = Tool.all
     end
@@ -76,5 +78,24 @@ class ToolsController < ApplicationController
       :condition,
       :photo
     )
+  end
+
+  def search_params
+    if params[:search]
+      params.require(:search).permit(
+        :query,
+        :max_price,
+        :category,
+        :distance
+      )
+    end
+  end
+
+  def filter_tools
+    tools = Tool.all
+    tools = tools.where("name ILIKE ?", "%#{search_params[:query]}%") unless search_params[:query].blank?
+    tools = tools.where("category ILIKE ?", "%#{search_params[:category]}%") unless search_params[:category].blank?
+    tools = tools.where("daily_price < ?", search_params[:max_price]) unless search_params[:max_price].blank?
+    tools
   end
 end
