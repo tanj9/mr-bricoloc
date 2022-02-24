@@ -1,2 +1,8 @@
-<h3><%= tool.name %></h3>
-<p><%= tool.address %></p>
+<div class="window">
+  <%= cl_image_tag(tool.photo.key, :transformation => {
+  :opacity => 90
+    })%>
+  <h2><%= tool.name %></h2>
+  <p><%= tool.address %></p>
+  <p id="price">Price per day: <%= tool.daily_price %>€</p>
+</div>
