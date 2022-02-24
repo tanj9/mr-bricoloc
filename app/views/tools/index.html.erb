@@ -1,6 +1,10 @@
 <div class="page-wrapper">
   <div class="title pt-3 pb-3 mx-auto text-center">
-    <h1>Results for "Drill"</h1>
+    <% if params[:search]["query"].present? %>
+      <h1>Results for "<%= params[:search]["query"] %>"</h1>
+    <% else %>
+      <h1>Here are all the available tools</h1>
+    <% end %>
   </div>
   <div class="cards-container">
       <% @tools.each do |tool| %>

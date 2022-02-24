@@ -85,6 +85,7 @@ tool = Tool.new(
 file = URI.open('https://www.sweidas.com.au/assets/full/WE8119.png?20200707031458')
 tool.photo.attach(io: file, filename: 'wrench.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -100,9 +101,9 @@ tool = Tool.new(
 file = URI.open('https://static.lceassets.com/thumbnails/c7/c786d11f6781dcafa5ba8f31450864837abda470/defonceuse-electronique-8mm-1100w-rp1110cj-makita-square-650x650.jpg')
 tool.photo.attach(io: file, filename: 'ripper.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
-
 
 user = User.find_by(first_name: 'Adrien')
 tool = Tool.new(
@@ -117,6 +118,7 @@ tool = Tool.new(
 file = URI.open('https://cdn.shopify.com/s/files/1/0294/0862/4685/products/Gold-Painted-Groundbreaking-Shovel-Black-Handle_800x.png')
 tool.photo.attach(io: file, filename: 'shovel.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -132,6 +134,7 @@ tool = Tool.new(
 file = URI.open('https://m.media-amazon.com/images/I/61qKNsJKxZL._AC_SL1000_.jpg')
 tool.photo.attach(io: file, filename: 'drill_teeno.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -147,6 +150,7 @@ tool = Tool.new(
 file = URI.open('https://s3-us-west-2.amazonaws.com/lend-engine/libraryofstuff/large/5f7062dca37f6.jpg')
 tool.photo.attach(io: file, filename: 'drill_driver.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -164,6 +168,7 @@ tool = Tool.new(
 file = URI.open('https://images.tom.shop/producten/original/haba_terra_kids_schroevendraaierset_17_cm_groen_zilver_twee_stuks_239992.jpg')
 tool.photo.attach(io: file, filename: 'green_screwdrivers.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -180,6 +185,7 @@ tool = Tool.new(
 file = URI.open('http://hortimeca.be/102-thickbox_default/taille-haie-echo-xechcr1501.jpg')
 tool.photo.attach(io: file, filename: 'hedge_trimmer.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -195,6 +201,7 @@ tool = Tool.new(
 file = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA6aseZui4UimuUNnVtLAzfsSvrJ74S3X5hjE0-rsDXVuAI09-xH19gblSqwQddVfdjeI&usqp=CAU')
 tool.photo.attach(io: file, filename: 'drill_matika.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -211,6 +218,7 @@ tool = Tool.new(
 file = URI.open('https://static.wixstatic.com/media/557d9b_2d360222e3244995ae6df249d5408a1e~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_90,usm_0.66_1.00_0.01/557d9b_2d360222e3244995ae6df249d5408a1e~mv2.jpg')
 tool.photo.attach(io: file, filename: 'watering_cab.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -227,6 +235,7 @@ tool = Tool.new(
 file = URI.open('https://i0.wp.com/homefixated.com/wp-content/uploads/2012/06/circular-saw.jpg')
 tool.photo.attach(io: file, filename: 'circular_saw.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -243,22 +252,7 @@ tool = Tool.new(
 file = URI.open('https://s3-us-west-2.amazonaws.com/lend-engine/libraryofstuff/large/5e7625a451b7d.jpg')
 tool.photo.attach(io: file, filename: 'mower.jpg', content_type: 'image/jpg')
 tool.user = user
-tool.save!
-puts "created tool: #{tool.name}"
-
-user = User.find_by(first_name: 'Jérôme')
-tool = Tool.new(
-  name: 'Pruning shear',
-  category: 'gardening',
-  sub_category: 'handtools',
-  daily_price: 4,
-  description: 'Special hand grip designed for left-handed people. Pair of lopping shears with 30- or 45-cm',
-  condition: 4,
-  available: true
-)
-file = URI.open('https://mikesbackyardnursery.com/wp-content/uploads/2016/02/DSC_0007.jpg')
-tool.photo.attach(io: file, filename: 'shear.jpg', content_type: 'image/jpg')
-tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -275,6 +269,7 @@ tool = Tool.new(
 file = URI.open('https://webimg.secondhandapp.at/w-i-mgl/5a214eb6057a87541de950d9')
 tool.photo.attach(io: file, filename: 'stepladder.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -291,6 +286,7 @@ tool = Tool.new(
 file = URI.open('https://ae01.alicdn.com/kf/HTB11.zlXaWs3KVjSZFxq6yWUXXaX/ABS-Construction-Safety-Helmets-Electrical-Engineering-Hard-Hat-Labor-Protective-Helmet-High-Quality-Men-Women-Work.jpg_Q90.jpg_.webp')
 tool.photo.attach(io: file, filename: 'helmet.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -307,6 +303,24 @@ tool = Tool.new(
 file = URI.open('https://www.cnet.com/a/img/16qq7d4KRmEimC_1vn_0b4nqLtE=/940x528/2020/12/07/39c983c3-5436-439a-8de5-46e3bdb6c1f0/18v-cordless-drills-8.jpg')
 tool.photo.attach(io: file, filename: 'helmet.jpg', content_type: 'image/jpg')
 tool.user = user
+tool.address = "#{user.address}, #{user.city}"
+tool.save!
+puts "created tool: #{tool.name}"
+
+user = User.find_by(first_name: 'Jérôme')
+tool = Tool.new(
+  name: 'Pruning shear',
+  category: 'gardening',
+  sub_category: 'handtools',
+  daily_price: 4,
+  description: 'Special hand grip designed for left-handed people. Pair of lopping shears with 30- or 45-cm',
+  condition: 4,
+  available: true
+)
+file = URI.open('https://mikesbackyardnursery.com/wp-content/uploads/2016/02/DSC_0007.jpg')
+tool.photo.attach(io: file, filename: 'shear.jpg', content_type: 'image/jpg')
+tool.user = user
+tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
@@ -354,21 +368,32 @@ puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
 
 booking = Booking.new(
   user: adrien,
-  tool: florent.tools.find_by(name: 'Ripper'),
+  tool: jerome.tools.find_by(name: 'Mower'),
   date_begin: '04/03/2022',
   date_end: '15/03/2022',
-  total_price: 12 * florent.tools.find_by(name: 'Ripper').daily_price,
+  total_price: 12 * jerome.tools.find_by(name: 'Mower').daily_price,
   status: 'declined'
 )
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
 
 booking = Booking.new(
-  user: jerome,
+  user: adrien,
   tool: florent.tools.find_by(name: 'Two green screwdrivers'),
   date_begin: '02/03/2022',
   date_end: '03/03/2022',
   total_price: 2 * florent.tools.find_by(name: 'Two green screwdrivers').daily_price,
+  status: 'pending'
+)
+booking.save!
+puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
+
+booking = Booking.new(
+  user: adrien,
+  tool: jerome.tools.find_by(name: 'Pruning shear'),
+  date_begin: '02/03/2022',
+  date_end: '03/03/2022',
+  total_price: 2 * jerome.tools.find_by(name: 'Pruning shear').daily_price,
   status: 'pending'
 )
 booking.save!
