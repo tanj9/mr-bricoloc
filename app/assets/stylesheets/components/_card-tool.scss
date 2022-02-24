@@ -51,10 +51,14 @@
 }
 
 .cards-container {
-  width: 65vw;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+}
+
+.cards-container .search-results {
+  width: 65vw;
+  grid-template-columns: 1fr 1fr;
   flex-grow: 1;
 }
 

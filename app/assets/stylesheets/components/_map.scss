@@ -22,5 +22,27 @@
   #map-box {
     height: 50vh;
     width: 50vh;
+    // box-shadow: ;
   }
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.mapboxgl-ctrl-attrib-inner a {
+  text-decoration: none;
+}
+
+.mapbox-improve-map {
+  text-decoration: none;
+}
+
+a.mapboxgl-ctrl-logo {
+  display: none;
 }

@@ -14,7 +14,9 @@ class ToolsController < ApplicationController
     @markers = @tools.geocoded.map do |tool|
         {
           lat: tool.latitude,
-          lng: tool.longitude
+          lng: tool.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { tool: tool }),
+          # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
         }
       end
   end
