@@ -10,6 +10,15 @@ class ToolsController < ApplicationController
     else
       @tools = Tool.all
     end
+
+    @markers = @tools.geocoded.map do |tool|
+        {
+          lat: tool.latitude,
+          lng: tool.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { tool: tool }),
+          # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
+        }
+      end
   end
 
   def show
@@ -27,6 +36,7 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     @tool.user = current_user
+    @tool.address = "#{@tool.user.address}, #{@tool.user.city}"
     authorize @tool
     if @tool.save!
       redirect_to tool_path(@tool)

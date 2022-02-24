@@ -56,6 +56,12 @@
   grid-gap: 16px;
 }
 
+.cards-container .search-results {
+  width: 65vw;
+  grid-template-columns: 1fr 1fr;
+  flex-grow: 1;
+}
+
 .text-description {
   overflow: hidden;
   height: 40px;
@@ -71,4 +77,3 @@
     grid-template-columns: 1fr;
   }
 }
-
