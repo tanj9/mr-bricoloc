@@ -5,7 +5,11 @@ class ToolsController < ApplicationController
   #  @tools = policy_scope(Tool).order(created_at: :desc)
     skip_policy_scope
     @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
-    @tools = Tool.all.where("name LIKE '%Drill%'")
+    if params[:search]["query"].present?
+      @tools = Tool.all.where("name ILIKE ?", "%#{params[:search][:query]}%")
+    else
+      @tools = Tool.all
+    end
   end
 
   def show
