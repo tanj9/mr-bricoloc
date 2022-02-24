@@ -105,6 +105,10 @@ class ToolsController < ApplicationController
       geo = Geocoder.search(request.remote_ip)
       lat = geo.loc.split(',')[0]
       lon = geo.loc.split(',')[1]
+      puts "BATMAN"
+      puts request.remote_ip
+      puts lat
+      puts lon
       return [lat, lon]
     end
   end
