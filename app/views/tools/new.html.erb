@@ -8,7 +8,7 @@
       <%= f.input :daily_price %>
       <%= f.input :condition %>
       <%= f.input :photo, as: :file %>
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= f.submit "Submit", class: "btn btn-ghost" %><%= link_to "Cancel", bookings_path, class: "cancel-link"%>
     <% end %>
   </div>
 </div>
