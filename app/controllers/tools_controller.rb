@@ -12,13 +12,13 @@ class ToolsController < ApplicationController
     end
 
     @markers = @tools.geocoded.map do |tool|
-        {
-          lat: tool.latitude,
-          lng: tool.longitude,
-          info_window: render_to_string(partial: "info_window", locals: { tool: tool }),
-          # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        }
-      end
+      {
+        lat: tool.latitude,
+        lng: tool.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { tool: tool }),
+        # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
+      }
+    end
   end
 
   def show
@@ -76,5 +76,36 @@ class ToolsController < ApplicationController
       :condition,
       :photo
     )
+  end
+
+  def search_params
+    if params[:search]
+      params.require(:search).permit(
+        :query,
+        :max_price,
+        :category,
+        :distance
+      )
+    end
+  end
+
+  def filter_tools
+    tools = Tool.all
+    tools = tools.where("name ILIKE ?", "%#{search_params[:query]}%") unless search_params[:query].blank?
+    tools = tools.where("category ILIKE ?", "%#{search_params[:category]}%") unless search_params[:category].blank?
+    tools = tools.where("daily_price < ?", search_params[:max_price]) unless search_params[:max_price].blank?
+    if filter_distance
+      tools = tools.near(filter_distance, search_params[:distance]) unless search_params[:distance].blank?
+    end
+    tools
+  end
+
+  def filter_distance
+    if Rails.env.production?
+      geo = Geocoder.search(request.remote_ip)
+      lat = geo.loc.split(',')[0]
+      lon = geo.loc.split(',')[1]
+      return [lat, lon]
+    end
   end
 end
