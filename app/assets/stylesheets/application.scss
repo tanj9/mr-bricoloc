@@ -8,6 +8,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "simple_calendar";
+@import "mapbox-gl/dist/mapbox-gl";
 
 // Your CSS partials
 @import "components/index";
@@ -20,9 +21,8 @@ body {
 }
 
 .page-wrapper {
-  background-color: $light;
   justify-content: center;
   margin: 0 auto;
-  width: 80vw;
+  width: 90vw;
   padding: 10px;
 }
