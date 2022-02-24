@@ -6,25 +6,55 @@
       <h1>Here are all the available tools</h1>
     <% end %>
   </div>
+  <div class="search-tools">
+    <div class="dropdown">
+      <button class="btn btn-ghost dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter results
+      </button>
+      <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
+        <form novalidate="novalidate" class="simple_form search col-6 offset-3" action="/tools" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+          <div class="search-form-control form-group">
+            <label for="search_query">Votre recherche</label>
+              <input label="text" class="form-control string required" type="text" name="search[query]" id="search_query" value=<%= params[:search]["query"] %> />
+            <label for="search_date_from">From:</label>
+              <input class="form-control string required" type="date" name="search[date_from]" id="search_date_from" />
+            <label for="search_date_to">to:</label>
+              <input class="form-control string required" type="date" name="search[date_to]" id="search_date_to" />
+            <label for="search_category">Category:</label>
+              <select class="form-select" name="search[category]" id="search_category" >
+                <option value="Garden">Garden</option>
+                <option value="Works">Works</option>
+                <option value="Decoration">Decoration</option>
+              </select>
+            <label for="search_distance" class="form-label">How far from your place?</label>
+              <input type="range" class="form-range" min="0" max="20" step="2.5" name="search[distance]" id="search_distance">
+            <button name="button" type="submit" class="btn-ghost mt-2">
+              <i class="fas fa-search"></i> Filter Search
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <div class="wrapper">
     <div class="cards-container search-results">
-        <% @tools.each do |tool| %>
-              <%= link_to tool_path(tool) do %>
-                <div class="card-trip">
-                  <%= cl_image_tag tool.photo.key %>
-                  <div class="card-trip-infos">
-                    <div>
-                      <h2><%= tool.name %></h2>
-                      <div class="text-description">
-                        <p><%= tool.description %></p>
-                      </div>
-                    </div>
-                  <h2 class="card-trip-pricing"><%= tool.daily_price %> €</h2>
-                  <%= cl_image_tag(tool.user.photo.key, :class => "card-trip-user avatar-bordered") %>
-                  </div>
+      <% @tools.each do |tool| %>
+        <%= link_to tool_path(tool) do %>
+          <div class="card-trip">
+            <%= cl_image_tag tool.photo.key %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= tool.name %></h2>
+                <div class="text-description">
+                  <p><%= tool.description %></p>
                 </div>
-              <% end %>
+                <h2 class="card-trip-pricing"><%= tool.daily_price %> €</h2>
+                <%= cl_image_tag(tool.user.photo.key, :class => "card-trip-user avatar-bordered") %>
+              </div>
+            </div>
+          </div>
         <% end %>
+      <% end %>
     </div>
     <div  id="map-box" style="width: 50%; height: 600px;"
       data-controller="mapbox"
