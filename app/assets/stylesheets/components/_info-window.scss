@@ -9,10 +9,12 @@
   overflow: hidden;
 }
 
-.mapboxgl-popup-content h2, p {
-  text-align: left;
-  padding-left: 5px;
-  padding-right: 5px;
+.mapboxgl-popup-content {
+  h2, p {
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 .mapboxgl-popup-content h2 {
