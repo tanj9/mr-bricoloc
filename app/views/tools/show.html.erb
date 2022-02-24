@@ -29,15 +29,16 @@
           <%= f.submit "Submit", class: "btn btn-ghost" %>
         </div>
         <% end %>
+        <div class="simple-calendar">
         <%= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
-        <%= date %>
-
-        <% meetings.each do |meeting| %>
-        <div class="meeting">
-         <p><%= meeting.user.first_name %></p>
+            <%= date %>
+            <% meetings.each do |meeting| %>
+            <div class="meeting">
+            <p> Already Booked</p>
+            </div>
+            <% end %>
+        <% end %>
         </div>
-  <% end %>
-<% end %>
       </div>
     </div>
   </div>
