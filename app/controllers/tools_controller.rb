@@ -107,14 +107,16 @@ class ToolsController < ApplicationController
   def filter_distance
     if Rails.env.production?
       geo = Geocoder.search(request.remote_ip)
-      lat = geo.latitude
-      lon = geo.longitude
+      # lat = geo.latitude
+      # lon = geo.longitude
       puts "BATMAN"
       puts "postal code: #{geo.postal_code}"
       puts "address: #{geo.address}"
-      puts "latitude: #{lat}"
-      puts "longitude: #{lon}"
-      return [lat, lon]
+      puts "coord GPS: #{geo.coordinates}"
+      # puts "latitude: #{lat}"
+      # puts "longitude: #{lon}"
+      # return [lat, lon]
+      return geo.coordinates
     end
   end
 end

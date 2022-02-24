@@ -12,14 +12,15 @@
         Filter results
       </button>
       <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
-        <form novalidate="novalidate" class="simple_form search col-6 offset-3" action="/tools" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+        <form novalidate="novalidate" class="simple_form search col-6 offset-3" action="/tools" accept-charset="UTF-8" method="get">
+          <input name="utf8" type="hidden" value="&#x2713;" />
           <div class="search-form-control form-group">
-            <label for="search_query">Votre recherche</label>
-              <input label="text" class="form-control string required" type="text" name="search[query]" id="search_query" value=<%= params[:search]["query"] %> />
+            <label for="search_query">Query</label>
+            <input label="text" class="form-control string required" type="text" name="search[query]" id="search_query" value=<%= params[:search]["query"] %> />
             <label for="search_date_from">From:</label>
-              <input class="form-control string required" type="date" name="search[date_from]" id="search_date_from" />
+            <input class="form-control string required" type="date" name="search[date_from]" id="search_date_from" />
             <label for="search_date_to">to:</label>
-              <input class="form-control string required" type="date" name="search[date_to]" id="search_date_to" />
+            <input class="form-control string required" type="date" name="search[date_to]" id="search_date_to" />
             <label for="search_category">Category:</label>
               <select class="form-select" name="search[category]" id="search_category" >
                 <option value="Garden">Garden</option>
@@ -27,7 +28,7 @@
                 <option value="Decoration">Decoration</option>
               </select>
             <label for="search_distance" class="form-label">How far from your place?</label>
-              <input type="range" class="form-range" min="0" max="50" step="2.5" name="search[distance]" id="search_distance">
+            <input type="range" class="form-range" min="0" max="50" step="2.5" name="search[distance]" id="search_distance">
             <button name="button" type="submit" class="btn-ghost mt-2">
               <i class="fas fa-search"></i> Filter Search
             </button>
@@ -63,3 +64,4 @@
     </div>
   </div>
 </div>
+
