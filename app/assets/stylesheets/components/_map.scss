@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#map-box {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media(max-width: 768px) {
+  .wrapper {
+    align-items: center;
+    grid-template-columns: 1fr;
+    flex-direction: column-reverse;
+  }
+
+  #map-box {
+    height: 50vh;
+    width: 50vh;
+  }
+}

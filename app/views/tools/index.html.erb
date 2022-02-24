@@ -6,31 +6,30 @@
       <h1>Here are all the available tools</h1>
     <% end %>
   </div>
-  <div class="cards-container">
-      <% @tools.each do |tool| %>
-            <%= link_to tool_path(tool) do %>
-              <div class="card-trip">
-                <%= cl_image_tag tool.photo.key %>
-                <div class="card-trip-infos">
-                  <div>
-                    <h2><%= tool.name %></h2>
-                    <div class="text-description">
-                      <p><%= tool.description %></p>
+  <div class="wrapper">
+    <div class="cards-container">
+        <% @tools.each do |tool| %>
+              <%= link_to tool_path(tool) do %>
+                <div class="card-trip">
+                  <%= cl_image_tag tool.photo.key %>
+                  <div class="card-trip-infos">
+                    <div>
+                      <h2><%= tool.name %></h2>
+                      <div class="text-description">
+                        <p><%= tool.description %></p>
+                      </div>
                     </div>
+                  <h2 class="card-trip-pricing"><%= tool.daily_price %> €</h2>
+                  <%= cl_image_tag(tool.user.photo.key, :class => "card-trip-user avatar-bordered") %>
                   </div>
-                <h2 class="card-trip-pricing"><%= tool.daily_price %> €</h2>
-                <%= cl_image_tag(tool.user.photo.key, :class => "card-trip-user avatar-bordered") %>
                 </div>
-              </div>
-            <% end %>
-      <% end %>
-  </div>
-  <div class="map-box-container">
-    <% @markers = @tools.geocoded.map do |tool| %>
-        <% { %>
-          <%= lat: tool.latitude, %>
-          <%= lng: tool.longitude %>
-        <% } %>
-      <% end %>
+              <% end %>
+        <% end %>
+    </div>
+    <div  id="map-box" style="width: 50%; height: 600px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>

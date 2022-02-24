@@ -51,9 +51,11 @@
 }
 
 .cards-container {
+  width: 65vw;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
+  flex-grow: 1;
 }
 
 .text-description {
@@ -71,4 +73,3 @@
     grid-template-columns: 1fr;
   }
 }
-

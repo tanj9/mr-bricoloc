@@ -10,6 +10,13 @@ class ToolsController < ApplicationController
     else
       @tools = Tool.all
     end
+
+    @markers = @tools.geocoded.map do |tool|
+        {
+          lat: tool.latitude,
+          lng: tool.longitude
+        }
+      end
   end
 
   def show
