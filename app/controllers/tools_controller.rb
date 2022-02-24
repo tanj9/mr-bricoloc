@@ -23,6 +23,7 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     @tool.user = current_user
+    @tool.address = "#{@tool.user.address}, #{@tool.user.city}"
     authorize @tool
     if @tool.save!
       redirect_to tool_path(@tool)
