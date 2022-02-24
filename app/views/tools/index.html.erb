@@ -21,4 +21,12 @@
             <% end %>
       <% end %>
   </div>
+  <div class="map-box-container">
+    <% @markers = @tools.geocoded.map do |tool| %>
+        <% { %>
+          <%= lat: tool.latitude, %>
+          <%= lng: tool.longitude %>
+        <% } %>
+      <% end %>
+  </div>
 </div>
