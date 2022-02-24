@@ -26,6 +26,8 @@ class BookingsController < ApplicationController
     @booking.tool = @tool
     @booking.status = "pending"
     @booking.total_price = ((((@booking.date_end - @booking.date_begin).to_f / 60_000) + 1).floor * @tool.daily_price)
+    @booking.start_time = @booking.date_begin
+    @booking.end_time = @booking.date_end
     authorize @booking
     if @booking.save
       redirect_to bookings_path
@@ -80,6 +82,8 @@ class BookingsController < ApplicationController
       render 'new'
     end
   end
+
+
 
   private
 
