@@ -14,8 +14,10 @@
               <%= link_to booking_path(booking) do %>
                 <i class="fas fa-eye"></i>
               <% end %>
-              <%= link_to cancel_booking_path(booking), method: :patch do %>
-                <i class="fas fa-times"></i>
+              <% if policy(booking).cancel? %>
+                <%= link_to cancel_booking_path(booking), method: :patch do %>
+                  <i class="fas fa-times"></i>
+                <% end %>
               <% end %>
             </h2>
           </div>
@@ -37,11 +39,15 @@
             <%= link_to booking_path(booking) do %>
               <i class="fas fa-eye"></i>
             <% end %>
-            <%= link_to accept_booking_path(booking), method: :patch do %>
-              <i class="fas fa-check"></i>
+            <% if policy(booking).accept? %>
+              <%= link_to accept_booking_path(booking), method: :patch do %>
+                <i class="fas fa-check"></i>
+              <% end %>
             <% end %>
-            <%= link_to decline_booking_path(booking), method: :patch do %>
-              <i class="fas fa-times"></i>
+            <% if policy(booking).decline? %>
+              <%= link_to decline_booking_path(booking), method: :patch do %>
+                <i class="fas fa-times"></i>
+              <% end %>
             <% end %>
           </h2>
         </div>

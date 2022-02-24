@@ -10,16 +10,13 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    # only if the user creating the booking is not the owner of the tool being booked
+    user != record.tool.user
   end
 
   def show?
-    # true (i.e. authorized) if
-    # 1. user is the booking user (record.user)
-    # OR
-    # 2. user is the owner of the booked tool (record.tool.user)
-    # (user == record.tool.user) || (user == record.user)
-    true
+    # only for user who is booking or for the owner of the tool being booked
+    (user == record.user) || (user == record.tool.user)
   end
 
   def edit?
@@ -31,7 +28,8 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def accept?
-    user == record.tool.user
+    # owner can accept if booking is pending only
+    (user == record.tool.user) && (record.status == 'pending')
   end
 
   def decline?
@@ -39,6 +37,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def cancel?
-    user == record.user
+    # user can cancel if booking is pending or validated
+    (user == record.user) && ((record.status == 'pending') || (record.status == 'validated'))
   end
 end

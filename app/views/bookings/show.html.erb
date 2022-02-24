@@ -1,18 +1,18 @@
 <div class="container">
   <h1>Details of the Booking</h1>
-  <p>From <strong><%= @booking.date_begin.strftime("%d/%m/%Y") %></strong> to <strong><%= @booking.date_end.strftime("%d/%m/%Y") %></strong>,</p>
-
   <% if current_user == @booking.tool.user %>
-    <p>Your <strong><%= @booking.tool.name %></strong> has been booked by :</p>
-    <p><%= @booking.user.first_name %> <%= @booking.user.last_name%> (<strong><%= @booking.user.email %></strong>)</p>
+    <p>Your <strong><%= @booking.tool.name %></strong> has been booked by :
+    <%= @booking.user.first_name %> <%= @booking.user.last_name%> (<strong><%= @booking.user.email %></strong>)</p>
   <% elsif current_user == @booking.user %>
-    <p>You have booked a <strong><%= @booking.tool.name %></strong> that belongs to: </p>
-    <p><%= @booking.tool.user.first_name %> <%= @booking.tool.user.last_name%> (<strong><%= @booking.tool.user.email %></strong>)</p>
+    <p>You have booked a <strong><%= @booking.tool.name %></strong> that belongs to:
+    <%= @booking.tool.user.first_name %> <%= @booking.tool.user.last_name%> (<strong><%= @booking.tool.user.email %></strong>)</p>
   <% end %>
+  <p>From <strong><%= @booking.date_begin.strftime("%d/%m/%Y") %></strong> to <strong><%= @booking.date_end.strftime("%d/%m/%Y") %></strong></p>
+  This booking is currently <strong><%= @booking.status %></strong>
   <br>
-  This booking is currently <strong><%= @booking.status %></strong>,  do you wish to <%= link_to  "update", edit_booking_path(@booking)%> ?
-  <br><br>
-  <p><%= link_to bookings_path do%>
-  <div class="btn btn-ghost">Back to List</div>
-  <%end%></p>
+  <p>
+    <%= link_to bookings_path do %>
+      <div class="btn btn-ghost">Back to List</div>
+    <%end%>
+  </p>
 </div>
