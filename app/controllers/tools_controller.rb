@@ -6,8 +6,8 @@ class ToolsController < ApplicationController
     skip_policy_scope
     @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
     if search_params.present?
-      @tools = filter_tools
       @search_params = search_params
+      @tools = filter_tools
     else
       @tools = Tool.all
     end
