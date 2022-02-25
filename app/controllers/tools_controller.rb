@@ -2,7 +2,6 @@ class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
-  #  @tools = policy_scope(Tool).order(created_at: :desc)
     skip_policy_scope
     @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
     @search_params = {}
@@ -17,8 +16,7 @@ class ToolsController < ApplicationController
       {
         lat: tool.latitude,
         lng: tool.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { tool: tool }),
-        # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
+        info_window: render_to_string(partial: "info_window", locals: { tool: tool })
       }
     end
   end
@@ -30,7 +28,7 @@ class ToolsController < ApplicationController
     # CALENDAR VIEW: Scope your query to the dates being shown:
     start_date = params.fetch(:start_date, Date.today).to_date
     # For a monthly view:
-    @meetings = Booking.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+    @meetings = Booking.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_year, status: "validated", tool: @tool)
   end
 
   def new
@@ -96,27 +94,8 @@ class ToolsController < ApplicationController
     tools = tools.where("name ILIKE ?", "%#{search_params[:query]}%") unless search_params[:query].blank?
     tools = tools.where("category ILIKE ?", "%#{search_params[:category]}%") unless search_params[:category].blank?
     tools = tools.where("daily_price < ?", search_params[:max_price]) unless search_params[:max_price].blank?
-    puts "GROMIT"
-    puts request.remote_ip
-    if filter_distance
-      tools = tools.near(filter_distance, search_params[:distance]) unless search_params[:distance].blank?
-    end
+    user_address = "#{current_user.address}, #{current_user.city}"
+    tools = tools.near(user_address, search_params[:distance]) unless search_params[:distance].blank?
     tools
-  end
-
-  def filter_distance
-    if Rails.env.production?
-      geo = Geocoder.search(request.remote_ip)
-      # lat = geo.latitude
-      # lon = geo.longitude
-      puts "BATMAN"
-      puts "postal code: #{geo.postal_code}"
-      puts "address: #{geo.address}"
-      puts "coord GPS: #{geo.coordinates}"
-      # puts "latitude: #{lat}"
-      # puts "longitude: #{lon}"
-      # return [lat, lon]
-      return geo.coordinates
-    end
   end
 end

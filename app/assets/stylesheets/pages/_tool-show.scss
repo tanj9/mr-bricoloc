@@ -6,9 +6,11 @@
 }
 
 .tool-photo img {
+  width: 600px;
   height: 370px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  object-fit: cover;
 }
 
 .pictures-tool {
@@ -16,7 +18,9 @@
 }
 
 .small-pics img {
-  width: 150px;
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
   margin-bottom: 8px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
