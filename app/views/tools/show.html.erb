@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="d-flex justify-content-between">
-                  <p id="price">Price per day: <%= @tool.daily_price %> €</p>
+                  <p>Price per day: <p id="dailyprice"><%= @tool.daily_price %> €</p>
                   <button type="button" class="btn btn-primary btn-modal" data-bs-toggle="modal" data-bs-target="#calendarModal">
                     Book
                   </button>
@@ -38,6 +38,7 @@
                       <%= f.input :date_begin, as: :date, html5: true, input_html: {:"data-calendar-target"=> "datestart"} %>
                       <%= f.input :date_end, as: :date, html5: true, input_html: {:"data-calendar-target"=> "dateend"}%>
                       <%= f.submit "Submit", class: "btn btn-ghost" %>
+                      <div data-calendar-target ="totalprice"></div>
                     </div>
                     <% end %>
 
