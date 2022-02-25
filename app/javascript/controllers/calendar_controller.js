@@ -11,7 +11,7 @@ export default class extends Controller {
   input(event) {
     const date = event.params.date
     //affichage de la case "meeting proposed"
-    event.currentTarget.innerHTML = '<div class="meeting-proposed"><p>Your booking</p></div>' ;
+    event.currentTarget.innerHTML = '<div class="meeting-proposed"><i class="fas fa-check-circle"></i></div>' ;
     //check des valeurs du formulaire de date pour déterminer où mettre la date cliquée (end? start?)
     if (this.datestartTarget.value === "") {
       this.datestartTarget.value = date;
@@ -28,7 +28,7 @@ export default class extends Controller {
           useGrouping: false
         })
         var id = `tile${yearMonth}${endString}`;
-        document.getElementById(id).innerHTML = '<div class="meeting-proposed"><p>Your booking</p></div>' ;
+        document.getElementById(id).innerHTML = '<div class="meeting-proposed"><i class="fas fa-check-circle"></i></div>' ;
       }
       // si les 2 champs sont deja remplis : on efface tous les "meeting-proposed" dans les cases et on recommence à start-date
     }else {
@@ -36,7 +36,7 @@ export default class extends Controller {
       Array.from(toErase).forEach( (meeting) => {
         meeting.remove();
       });
-      event.currentTarget.innerHTML = '<div class="meeting-proposed"><p>Your booking</p></div>' ;
+      event.currentTarget.innerHTML = '<div class="meeting-proposed"><i class="fas fa-check-circle"></i></div>' ;
       this.datestartTarget.value = date;
       this.dateendTarget.value = "";
     }
