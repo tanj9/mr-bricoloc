@@ -90,7 +90,7 @@ class ToolsController < ApplicationController
   end
 
   def filter_tools
-    tools = Tool.all
+    tools = Tool.where.not(user: current_user)
     tools = tools.where("name ILIKE ?", "%#{search_params[:query]}%") unless search_params[:query].blank?
     tools = tools.where("category ILIKE ?", "%#{search_params[:category]}%") unless search_params[:category].blank?
     tools = tools.where("daily_price < ?", search_params[:max_price]) unless search_params[:max_price].blank?
