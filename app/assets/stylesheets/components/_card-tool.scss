@@ -5,6 +5,9 @@
   height: 300px;
   color: $taupe;
   border-radius: 4px;
+  &:hover {
+    box-shadow: 0 0 30px rgba($taupe,0.5);
+  }
 }
 
 .card-trip > img {
