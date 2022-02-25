@@ -11,20 +11,20 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: $green;
   transition: background 0.3s ease;
 }
 
 .meeting-proposed {
   color: white;
-  padding: 8px 24px;
+  padding: 10px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: $green;
   transition: background 0.3s ease;
 }
 
 .meeting:hover {
-  background: #1BCB7F;
+  background: $green;
   color: white;
 }
 
@@ -34,5 +34,5 @@
 }
 
 .simple-calendar td:hover {
-  background: #1BCB7F;
+  background: $green;
 }
