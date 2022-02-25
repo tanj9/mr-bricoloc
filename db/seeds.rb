@@ -69,11 +69,38 @@ user.photo.attach(io: file, filename: 'jerome.jpg', content_type: 'image/jpg')
 user.save!
 puts "created user: #{user.first_name}"
 
+user = User.new(
+  first_name: 'Kevin',
+  last_name: 'Leblond',
+  address: '11 rue de Tocqueville',
+  city: 'Paris',
+  date_of_birth: '07/03/1998',
+  email: 'kevin@leblond.com',
+  password: '000000'
+)
+file = URI.open('https://kitt.lewagon.com/placeholder/users/k-leblond')
+user.photo.attach(io: file, filename: 'adrien.jpg', content_type: 'image/jpg')
+user.save!
+puts "created user: #{user.first_name}"
+
+user = User.new(
+  first_name: 'Marie',
+  last_name: 'Zorayan',
+  address: '14 rue Crespin du Gast',
+  city: 'Paris',
+  date_of_birth: '10/10/2000',
+  email: 'marie@zorayan.it',
+  password: '000000'
+)
+file = URI.open('https://kitt.lewagon.com/placeholder/users/mariezry')
+user.photo.attach(io: file, filename: 'adrien.jpg', content_type: 'image/jpg')
+user.save!
+puts "created user: #{user.first_name}"
 
 puts "created #{User.count} users"
 
 puts '2. SEED TOOLS'
-user = User.find_by(first_name: 'Florent')
+user = User.find_by(first_name: 'Kevin')
 tool = Tool.new(
   name: 'Wrench',
   category: 'works',
@@ -95,7 +122,7 @@ tool = Tool.new(
   category: 'works',
   sub_category: 'powertools',
   daily_price: 15,
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim.',
+  description: 'Beautiful ripper. Highly efficient. You will love it. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim.',
   condition: 3,
   available: true
 )
@@ -139,6 +166,7 @@ tool.address = "#{user.address}, #{user.city}"
 tool.save!
 puts "created tool: #{tool.name}"
 
+user = User.find_by(first_name: 'Marie')
 tool = Tool.new(
   name: 'Drill/Driver',
   category: 'works',
@@ -260,7 +288,7 @@ puts "created tool: #{tool.name}"
 user = User.find_by(first_name: 'Jérôme')
 tool = Tool.new(
   name: 'Stepladder',
-  category: 'wordks',
+  category: 'works',
   sub_category: 'handtools',
   daily_price: 4,
   description: 'Superfold Step ladder. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.',
@@ -334,6 +362,8 @@ adrien = User.find_by(first_name: 'Adrien')
 marion = User.find_by(first_name: 'Marion')
 florent = User.find_by(first_name: 'Florent')
 jerome = User.find_by(first_name: 'Jérôme')
+marie = User.find_by(first_name: 'Marie')
+kevin = User.find_by(first_name: 'Kevin')
 booking = Booking.new(
   user: marion,
   tool: florent.tools.first,
@@ -368,7 +398,7 @@ booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
 
 booking = Booking.new(
-  user: adrien,
+  user: kevin,
   tool: jerome.tools.find_by(name: 'Mower'),
   date_begin: '04/03/2022',
   date_end: '15/03/2022',
@@ -379,7 +409,18 @@ booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
 
 booking = Booking.new(
-  user: adrien,
+  user: kevin,
+  tool: jerome.tools.find_by(name: 'Helmet'),
+  date_begin: '15/02/2022',
+  date_end: '19/02/2022',
+  total_price: 5 * jerome.tools.find_by(name: 'Helmet').daily_price,
+  status: 'validated'
+)
+booking.save!
+puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
+
+booking = Booking.new(
+  user: marie,
   tool: florent.tools.find_by(name: 'Two green screwdrivers'),
   date_begin: '02/03/2022',
   date_end: '03/03/2022',
@@ -390,7 +431,7 @@ booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
 
 booking = Booking.new(
-  user: adrien,
+  user: marie,
   tool: jerome.tools.find_by(name: 'Pruning shear'),
   date_begin: '02/03/2022',
   date_end: '03/03/2022',
@@ -407,6 +448,28 @@ booking = Booking.new(
   date_end: '07/03/2022',
   total_price: 3 * florent.tools.find_by(name: 'Two green screwdrivers').daily_price,
   status: 'declined'
+)
+booking.save!
+puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
+
+booking = Booking.new(
+  user: adrien,
+  tool: jerome.tools.find_by(name: 'Drill'),
+  date_begin: '18/02/2022',
+  date_end: '20/02/2022',
+  total_price: 3 * jerome.tools.find_by(name: 'Drill').daily_price,
+  status: 'validated'
+)
+booking.save!
+puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
+
+booking = Booking.new(
+  user: adrien,
+  tool: jerome.tools.find_by(name: 'Drill'),
+  date_begin: '28/02/2022',
+  date_end: '28/02/2022',
+  total_price: jerome.tools.find_by(name: 'Drill').daily_price,
+  status: 'validated'
 )
 booking.save!
 puts "created booking: #{booking.user.first_name} / #{booking.tool.name}"
