@@ -2,34 +2,53 @@
   <h1 style = 'text-align: center; padding:10px'>Welcome <%=current_user.first_name%></h1>
 
   <div class="tab_wrapper" data-controller="switch-tab">
+
     <ul class="list-inline tabs-underlined" id="dashboard-tab">
       <li>
-        <a href="#" class="tab-underlined active" id="my-bookings-tab" data-action="click->switch-tab#switch">My bookings</a>
+        <a href="" class="tab-underlined active" data-action="click->switch-tab#switch" data-switch-tab-target="tab" data-tab-name="bookings-user">My bookings</a>
       </li>
       <li>
-        <a href="#" class="tab-underlined" id="bookings-on-my-tools-tab" data-action="click->switch-tab#switch">Bookings on my tools</a>
+        <a href="" class="tab-underlined" data-action="click->switch-tab#switch" data-switch-tab-target="tab" data-tab-name="bookings-owner">Bookings on my tools</a>
       </li>
       <li>
-        <a href="#" class="tab-underlined" id="my-toolbox-tab" data-action="click->switch-tab#switch">My toolbox</a>
+        <a href="" class="tab-underlined" data-action="click->switch-tab#switch" data-switch-tab-target="tab" data-tab-name="toolbox">My toolbox</a>
       </li>
     </ul>
 
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade active show" id="my-bookings" role="tabpanel" aria-labelledby="my-bookings-tab">
+    <div class="tab-content">
+      <div data-switch-tab-target="content" data-tab-name="bookings-user">
         <p>In this space I will get my bookings.</p>
         <p>The bookings that I have requested as a user.</p>
       </div>
-      <div class="tab-pane fade" id="bookings-on-my-tools" role="tabpanel" aria-labelledby="bookings-on-my-tools-tab">
+      <div class="d-none" data-switch-tab-target="content" data-tab-name="bookings-owner">
         <p>In this space I will get the bookings requested by other users on my tools</p>
         <p>If I have not tool, i think the tab should be disabled</p>
         <p>If I have tools but no bookings on them, I should get a message <em>"no bookings on my tools yet"</em></p>
       </div>
-      <div class="tab-pane fade" id="my-toolbox" role="tabpanel" aria-labelledby="my-toolbox-tab">
+      <div class="d-none" data-switch-tab-target="content" data-tab-name="toolbox">
         <p>In this space I will get the my tools</p>
         <p>If I have not tool, I could get a message <em>"no tools yet in your toolbox... Add a tool"</em></p>
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <br><br><br>
   <div class = "list-container">
     <h2  class="border-bottom list-container-title mb-3 pb-2">Your Bookings</h2>
