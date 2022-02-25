@@ -64,6 +64,14 @@
                 </div>
                 <h2 class="card-trip-pricing"><%= tool.daily_price %> €</h2>
                 <%= cl_image_tag(tool.user.photo.key, :class => "card-trip-user avatar-bordered") %>
+                 <div class="picto-rounded card-trip-category-icon">
+                 <% case tool.category
+                  when 'garden'%>
+                  <i class="fas fa-cannabis"></i>
+                 <% when 'works'%><i class="fas fa-hammer"></i>
+                 <% when 'decoration' %><i class="fal fa-paint-roller"></i>
+                 <%end%>
+                 </div>
               </div>
             </div>
           </div>
