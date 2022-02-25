@@ -30,7 +30,7 @@ puts "created user: #{user.first_name}"
 user = User.new(
   first_name: 'Marion',
   last_name: 'Rigard',
-  address: '14 rue des Olympiades',
+  address: '3 rue Elzevir',
   city: 'Paris',
   date_of_birth: '22/11/2000',
   email: 'marion.rigard@gmail.com',
@@ -44,7 +44,7 @@ puts "created user: #{user.first_name}"
 user = User.new(
   first_name: 'Florent',
   last_name: 'Géron',
-  address: '5 rue Saint-Exupéry',
+  address: '55 rue Victor Hugo',
   city: 'Montreuil',
   date_of_birth: '16/07/1994',
   email: 'florent.geron@orange.fr',
