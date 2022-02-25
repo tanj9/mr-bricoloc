@@ -15,38 +15,37 @@
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
-
-          <%= f.input :first_name,
-                      required: true %>
-          <%= f.input :last_name,
-                      required: true %>
-          <%= f.input :address,
-                      required: true %>
-          <%= f.input :city,
-                      required: true %>
-          <%= f.input :date_of_birth,
-                      required: false %>
-          <%= f.input :photo, as: :file %>
-          <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      required: true,
-                      input_html: { autocomplete: "new-password" } %>
+          <div class="row">
+            <div class="col-6"><%= f.input :first_name,
+                        required: true %></div>
+            <div class="col-6"><%= f.input :last_name,
+                        required: true %></div>
+            <div class="col-8"><%= f.input :address,
+                        required: true %></div>
+            <div class="col-4"><%= f.input :city,
+                        required: true %></div>
+            <div class="col-12"><%= f.input :date_of_birth,
+                        required: false %></div>
+            <div class="col-12"><%= f.input :photo, as: :file %>
+            <div class="col-12"><%= f.input :password,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %></div>
+            <div class="col-12"><%= f.input :password_confirmation,
+                        input_html: { autocomplete: "new-password" } %></div>
+          </div>
 
         </div>
 
-        <div class="form-actions btn btn-primary">
+        <div class="form-actions btn btn-ghost">
           <%= f.button :submit, "Update" %>
         </div>
       <% end %>
-
+      <br><br>
       <h3>Cancel my account</h3>
 
-      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), class: "cancel-link", data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-      <%= link_to "Back", :back %>
+      <%= link_to "Back", :back, class: "cancel-link" %>
     </div>
   </div>
 </div>
