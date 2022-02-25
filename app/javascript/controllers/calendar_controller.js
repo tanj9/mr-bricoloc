@@ -31,7 +31,7 @@ export default class extends Controller {
         var id = `tile${yearMonth}${endString}`;
         document.getElementById(id).innerHTML = '<div class="meeting-proposed"><i class="fas fa-check-circle"></i></div>';
       // total_price update before submit
-        this.totalpriceTarget.innerHTML = `<h2 m-4>Total Price: ${totalPrice} EUR</h2>`
+        this.totalpriceTarget.innerHTML = `<h4 m-4>Total Price: ${totalPrice} EUR</h4>`
       }
       // si les 2 champs sont deja remplis : on efface tous les "meeting-proposed" dans les cases et on recommence à start-date
     }else {
