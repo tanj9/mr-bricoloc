@@ -10,14 +10,13 @@
           <div class="text m-4">
             <div class="row booking-info">
                 <h2 class="text-center"><%= @tool.name.capitalize %></h2>
-                <%# <%= cl_image_tag(current_user.photo.key, class: "avatar") %> %>
                 <h4 class="mt-5"><%= @tool.description %></h4>
                 <p>Category: <%= @tool.category %></p>
                 <p>Condition: <%= @tool.condition %>/5</p>
             </div>
             <div class="row">
                 <div class="d-flex justify-content-between">
-                  <p id="price">Price per day: <%= @tool.daily_price %> €</p>
+                  <p>Price per day: <p id="dailyprice"><%= @tool.daily_price %> €</p>
                   <button type="button" class="btn btn-primary btn-modal" data-bs-toggle="modal" data-bs-target="#calendarModal">
                     Book
                   </button>
@@ -39,7 +38,7 @@
                         <%= date %>
                         <% meetings.each do |meeting| %>
                           <div class="meeting">
-                          <p> Already Booked</p>
+                          <p><i class="fa-solid fa-circle-xmark"></i></p>
                           </div>
                         <% end %>
                       <% end %>
@@ -49,6 +48,7 @@
                           <%= f.input :date_end, as: :date, html5: true, input_html: {:"data-calendar-target"=> "dateend"}%>
                           <%= f.submit "Submit", class: "btn btn-ghost" %>
                         <% end %>
+                        <div data-calendar-target ="totalprice" class="total-price"></div>
                     </div>
                     </div>
                   </div>
