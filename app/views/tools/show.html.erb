@@ -1,6 +1,6 @@
 <div class="page-wrapper">
   <div class="container">
-    <div class="row mt-2">
+    <div class="row mt-2" data-controller="calendar">
       <div class="col-9">
         <div class="pictures-tool">
           <div class="small-pics">
@@ -24,8 +24,8 @@
       <div class="booking-tool col-3">
         <h4>Book this <%=@tool.name%></h4>
         <%= simple_form_for [@tool, @booking] do |f| %>
-          <%= f.input :date_begin, as: :date, html5: true %>
-          <%= f.input :date_end, as: :date, html5: true %>
+          <%= f.input :date_begin, as: :date, html5: true, input_html: {:"data-calendar-target"=> "datestart"} %>
+          <%= f.input :date_end, as: :date, html5: true, input_html: {:"data-calendar-target"=> "dateend"}%>
           <%= f.submit "Submit", class: "btn btn-ghost" %>
         </div>
         <% end %>
