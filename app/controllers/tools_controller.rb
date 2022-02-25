@@ -2,7 +2,6 @@ class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
-  #  @tools = policy_scope(Tool).order(created_at: :desc)
     skip_policy_scope
     @owner_tools = Tool.where(user: current_user).order(created_at: :desc)
     @search_params = {}
@@ -14,13 +13,12 @@ class ToolsController < ApplicationController
     end
 
     @markers = @tools.geocoded.map do |tool|
-        {
-          lat: tool.latitude,
-          lng: tool.longitude,
-          info_window: render_to_string(partial: "info_window", locals: { tool: tool }),
-          # image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        }
-      end
+      {
+        lat: tool.latitude,
+        lng: tool.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { tool: tool })
+      }
+    end
   end
 
   def show
@@ -92,10 +90,12 @@ class ToolsController < ApplicationController
   end
 
   def filter_tools
-    tools = Tool.all
+    tools = Tool.where.not(user: current_user)
     tools = tools.where("name ILIKE ?", "%#{search_params[:query]}%") unless search_params[:query].blank?
     tools = tools.where("category ILIKE ?", "%#{search_params[:category]}%") unless search_params[:category].blank?
     tools = tools.where("daily_price < ?", search_params[:max_price]) unless search_params[:max_price].blank?
+    user_address = "#{current_user.address}, #{current_user.city}"
+    tools = tools.near(user_address, search_params[:distance]) unless search_params[:distance].blank?
     tools
   end
 end

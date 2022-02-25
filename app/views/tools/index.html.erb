@@ -6,29 +6,44 @@
       <h2>Here are all the available tools</h2>
     <% end %>
   </div>
-  <div class="search-tools">
-    <div class="dropdown">
+  <div class="search-tools mb-3">
+    <div class="dropdown dropend">
       <button class="btn btn-ghost dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         Filter results
       </button>
       <div class="dropdown-menu w-90 text-center advanced-screen" aria-labelledby="dropdownMenuButton1">
         <form novalidate="novalidate" class="simple_form search mb-1" action="/tools" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-          <div class="search-form-control form-group">
-            <label for="search_query">You are looking for...</label>
+          <div class="search-form-control d-flex align-items-end justify-content-between form-group">
+            <div class="col-2" >
+              <label for="search_query">You need...</label>
               <input label="text" class="form-control string required" type="text" name="search[query]" id="search_query" value="<%= @search_params[:query].present? ? @search_params[:query] : "" %>" />
-            <label for="search_max_price">How much can you afford per day?</label>
-              <input class="form-control string required" type="number" name="search[max_price]" id="search_max_price" value="<%= @search_params[:max_price].present? ? @search_params[:max_price] : "" %>" />
-            <label for="search_category">What category?</label>
-              <select class="form-select form-control" name="search[category]" id="search_category" >
-                <option value="">All</option>
-                <option value="Garden">Garden</option>
-                <option value="Works">Works</option>
-                <option value="Decoration">Decoration</option>
-              </select>
-            <label for="search_distance" class="form-label">How far from your place?</label>
-              <input type="range" class="form-range" min="0" max="20" step="2.5" name="search[distance]" id="search_distance">
-            <button name="button" type="submit" class="btn-ghost mt-2">
-              <i class="fas fa-search"></i> Filter Search
+            </div>
+            <div class="col-2">
+              <label for="search_max_price">Max price per day?</label>
+                <input class="form-control string required" type="number" name="search[max_price]" id="search_max_price" value="<%= @search_params[:max_price].present? ? @search_params[:max_price] : "" %>" />
+            </div>
+            <div class="col-2">
+              <label for="search_category">What category?</label>
+                <select class="form-select form-control" name="search[category]" id="search_category" >
+                  <option value="">All</option>
+                  <option value="Garden">Garden</option>
+                  <option value="Works">Works</option>
+                  <option value="Decoration">Decoration</option>
+                </select>
+            </div>
+            <div class="col-2">
+              <label for="search_distance" class="form-label">How far (km)?</label>
+                <input type="range" class="form-range" min="0" max="20" step="5" name="search[distance]" id="search_distance">
+                <div class="d-flex justify-content-between" >
+                  <span>0</span>
+                  <span>5</span>
+                  <span>10</span>
+                  <span>15</span>
+                  <span>20</span>
+                </div>
+            </div>
+            <button name="button" type="submit" class="btn-ghost mt-2 col-3">
+              <i class="fas fa-search"></i> Filter Results
             </button>
           </div>
         </form>
