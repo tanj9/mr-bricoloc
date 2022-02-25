@@ -10,7 +10,7 @@
           <div class="text m-4">
             <div class="row booking-info">
                 <h2 class="text-center"><%= @tool.name.capitalize %></h2>
-                <%= cl_image_tag(@user.photo.key, class: "avatar") %>
+                <%# <%= cl_image_tag(current_user.photo.key, class: "avatar") %> %>
                 <h4 class="mt-5"><%= @tool.description %></h4>
                 <p>Category: <%= @tool.category %></p>
                 <p>Condition: <%= @tool.condition %>/5</p>
@@ -33,24 +33,25 @@
                   <h4 class="modal-title" id="calendarModalLabel">Book this <%=@tool.name%></h4>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <%= simple_form_for [@tool, @booking] do |f| %>
-                      <%= f.input :date_begin, as: :date, html5: true, input_html: {:"data-calendar-target"=> "datestart"} %>
-                      <%= f.input :date_end, as: :date, html5: true, input_html: {:"data-calendar-target"=> "dateend"}%>
-                      <%= f.submit "Submit", class: "btn btn-ghost" %>
-                      <div data-calendar-target ="totalprice"></div>
-                    </div>
-                    <% end %>
-
-                  <div class="simple-calendar">
-                    <%= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
-                      <%= date %>
-                      <% meetings.each do |meeting| %>
-                        <div class="meeting">
-                        <p> Already Booked</p>
-                        </div>
+                  <div class="d-flex">
+                    <div class="simple-calendar col-7">
+                      <%= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
+                        <%= date %>
+                        <% meetings.each do |meeting| %>
+                          <div class="meeting">
+                          <p> Already Booked</p>
+                          </div>
+                        <% end %>
                       <% end %>
-                    <% end %>
+                    <div class="modal-body col-4">
+                        <%= simple_form_for [@tool, @booking] do |f| %>
+                          <%= f.input :date_begin, as: :date, html5: true, input_html: {:"data-calendar-target"=> "datestart"} %>
+                          <%= f.input :date_end, as: :date, html5: true, input_html: {:"data-calendar-target"=> "dateend"}%>
+                          <%= f.submit "Submit", class: "btn btn-ghost" %>
+                        <% end %>
+                        <div data-calendar-target ="totalprice"></div>
+                    </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -58,8 +59,6 @@
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
 </div>

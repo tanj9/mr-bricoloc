@@ -23,42 +23,53 @@
 
     <div class="tab-content">
 
-      <div data-switch-tab-target="content" data-tab-name="bookings-user">
-        <h2  class="border-bottom list-container-title mb-3 pb-2">Your Bookings</h2>
+      <div class="page-wrapper">
+
+        <div class="cards-container" id="your-bookings" data-switch-tab-target="content" data-tab-name="bookings-user">
           <% @user_bookings.each do |booking| %>
-            <div class="card-for-list">
+            <div class="card-trip">
               <%= cl_image_tag booking.tool.photo.key %>
-              <div class="card-for-list-infos">
-                <h2><%= booking.tool.name %></h2>
-                <p>from <%= booking.date_begin.strftime("%d/%m/%Y") %> to <%= booking.date_end.strftime("%d/%m/%Y") %></p>
-                <h2 class="card-for-list-pricing"><%= booking.total_price %> €</h2>
-                <h2><%= booking.status %>
-                  <%= link_to booking_path(booking) do %>
-                    <i class="fas fa-eye"></i>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= booking.tool.name %></h2>
+                  <div class="text-description">
+                    <p>from <%= booking.date_begin.strftime("%d/%m/%Y") %> to <%= booking.date_end.strftime("%d/%m/%Y") %></p>
+                  </div>
+                  <%= cl_image_tag(booking.tool.user.photo.key, :class => "card-trip-user avatar-bordered") %>
+                </div>
+                <div>
+                  <h2 class="card-trip-pricing"><%= booking.total_price %> €</h2>
+                  <h2><%= booking.status %></h2>
+                </div>
+                <%= link_to booking_path(booking) do %>
+                  <i class="fas fa-eye"></i>
+                <% end %>
+                <% if policy(booking).cancel? %>
+                  <%= link_to cancel_booking_path(booking), method: :patch do %>
+                    <i class="fas fa-times"></i>
                   <% end %>
-                  <% if policy(booking).cancel? %>
-                    <%= link_to cancel_booking_path(booking), method: :patch do %>
-                      <i class="fas fa-times"></i>
-                    <% end %>
-                  <% end %>
-                </h2>
+                <% end %>
               </div>
             </div>
           <% end %>
         </div>
-      </div>
 
-      <div class="d-none" data-switch-tab-target="content" data-tab-name="bookings-owner">
-        <h2 class="border-bottom list-container-title mb-3 pb-2">Bookings for Your Tools</h2>
-        <% @owner_bookings.each do |booking| %>
-          <div class="card-for-list">
-            <%= cl_image_tag booking.tool.photo.key %>
-            <div class="card-for-list-infos">
-              <h2><%= booking.tool.name %></h2>
-              <p>from <%= booking.date_begin.strftime("%d/%m/%Y") %> to <%= booking.date_end.strftime("%d/%m/%Y") %></p>
-              <h2 class="card-for-list-pricing"><%= booking.total_price %> €</h2>
-              <h2>
-                <%= booking.status %>
+        <div class="cards-container d-none" id="bookings-for-your-tools" data-switch-tab-target="content" data-tab-name="bookings-owner">
+          <% @owner_bookings.each do |booking| %>
+            <div class="card-trip">
+              <%= cl_image_tag booking.tool.photo.key %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= booking.tool.name %></h2>
+                  <div class="text-description">
+                    <p>from <%= booking.date_begin.strftime("%d/%m/%Y") %> to <%= booking.date_end.strftime("%d/%m/%Y") %></p>
+                  </div>
+                  <%= cl_image_tag(booking.user.photo.key, :class => "card-trip-user avatar-bordered") %>
+                </div>
+                <div>
+                  <h2 class="card-trip-pricing"><%= booking.total_price %> €</h2>
+                  <h2><%= booking.status %></h2>
+                </div>
                 <%= link_to booking_path(booking) do %>
                   <i class="fas fa-eye"></i>
                 <% end %>
@@ -72,47 +83,42 @@
                     <i class="fas fa-times"></i>
                   <% end %>
                 <% end %>
-              </h2>
+              </div>
             </div>
-          </div>
-        <% end %>
-        <p>In this space I will get the bookings requested by other users on my tools</p>
-        <p>If I have not tool, i think the tab should be disabled</p>
-        <p>If I have tools but no bookings on them, I should get a message <em>"no bookings on my tools yet"</em></p>
-      </div>
-
-      <div class="d-none" data-switch-tab-target="content" data-tab-name="toolbox">
-        <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-          <h2 class="list-container-title mb-1">
-            Your toolbox
-          </h2>
-          <%= link_to '+', new_tool_path, class: "add-btn" %>
+          <% end %>
         </div>
-        <% @owner_tools.each do |tool| %>
-          <div class="card-for-list">
-            <%= cl_image_tag tool.photo.key %>
-            <div class="card-for-list-infos">
-              <h2><%= tool.name %></h2>
-              <p><%=tool.category%></p>
-              <h2 class="card-for-list-pricing"><%= tool.daily_price %> €</h2>
-              <h2><%= link_to tool_path(tool) do %>
-                <i class="fas fa-eye"></i>
-              <% end %>
-              <%= link_to edit_tool_path(tool) do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
-              <%= link_to tool_path(tool) do %>
-                <i class="fas fa-times"></i>
-              <% end %>
-              </h2>
-            </div>
-          </div>
-        <% end %>
-        <p>In this space I will get the my tools</p>
-        <p>If I have not tool, I could get a message <em>"no tools yet in your toolbox... Add a tool"</em></p>
-      </div>
 
+        <div class="cards-container d-none" id="your-toolbox" data-switch-tab-target="content" data-tab-name="toolbox">
+          <% @owner_tools.each do |tool| %>
+            <div class="card-trip">
+              <%= cl_image_tag tool.photo.key %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= tool.name %></h2>
+                  <div class="text-description">
+                    <p><%=tool.category%></p>
+                  </div>
+                </div>
+                <h2 class="card-for-list-pricing"><%= tool.daily_price %> €</h2>
+                <h2>
+                  <%= link_to tool_path(tool) do %>
+                    <i class="fas fa-eye"></i>
+                  <% end %>
+                  <%= link_to tool_path(tool) do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                  <%= link_to tool_path(tool) do %>
+                    <i class="fas fa-times"></i>
+                  <% end %>
+                </h2>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
     </div>
+
   </div>
 
 </div>

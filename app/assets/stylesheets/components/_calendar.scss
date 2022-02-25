@@ -1,6 +1,6 @@
 .simple-calendar {
   table {
-    min-height: 100vh;
+    min-height: 50vh;
   }
   .today {
     background-color: #FAF3DD;
@@ -39,4 +39,8 @@
 
 .simple-calendar td:hover {
   background: rgba(0, 114, 0, 0.2);
+}
+
+.modal-content {
+  padding: 10px;
 }

@@ -11,7 +11,7 @@ export default class extends Controller {
   input(event) {
     const date = event.params.date
     //affichage de la case "meeting proposed"
-    event.currentTarget.innerHTML = '<div class="meeting-proposed"><p>Your booking</p></div>' ;
+    event.currentTarget.innerHTML = '<div class="meeting-proposed"><i class="fas fa-check-circle"></i></div>' ;
     //check des valeurs du formulaire de date pour déterminer où mettre la date cliquée (end? start?)
     if (this.datestartTarget.value === "") {
       this.datestartTarget.value = date;
@@ -29,7 +29,7 @@ export default class extends Controller {
           useGrouping: false
         })
         var id = `tile${yearMonth}${endString}`;
-        document.getElementById(id).innerHTML = '<div class="meeting-proposed"><p>Your booking</p></div>' ;
+        document.getElementById(id).innerHTML = '<div class="meeting-proposed"><i class="fas fa-check-circle"></i></div>';
       // total_price update before submit
         this.totalpriceTarget.innerHTML = `<h2 m-4>Total Price: ${totalPrice} EUR</h2>`
       }
@@ -40,7 +40,7 @@ export default class extends Controller {
         meeting.remove();
       });
       this.totalpriceTarget.innerHTML = ""
-      event.currentTarget.innerHTML = '<div class="meeting-proposed"><p>Your booking</p></div>' ;
+      event.currentTarget.innerHTML = '<div class="meeting-proposed"><i class="fas fa-check-circle"></i></div>' ;
       this.datestartTarget.value = date;
       this.dateendTarget.value = "";
     }
