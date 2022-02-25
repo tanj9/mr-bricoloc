@@ -6,6 +6,7 @@ export default class extends Controller {
 
   switch(event) {
     // console.log(event.currentTarget.dataset.tabName)
+    event.preventDefault();
     this.tabTargets.forEach((tab) => {
       if (tab.dataset.tabName == event.currentTarget.dataset.tabName) {
         tab.classList.add("active")
