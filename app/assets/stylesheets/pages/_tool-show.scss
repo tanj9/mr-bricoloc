@@ -6,6 +6,13 @@
   padding: 10px;
   margin-left: 16px;
   height: 450px;
+
+  & .text {
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
 .booking-tool h2 {
@@ -24,6 +31,11 @@
   display: flex;
 }
 
-// .tool-buttons {
-//   display: flex;
-// }
+.booking-info {
+  position: relative;
+  & > .avatar {
+    position: absolute;
+    right: 0;
+    width: 60px;
+  }
+}
