@@ -5,6 +5,13 @@
   height: 300px;
   color: $taupe;
   border-radius: 4px;
+  opacity:0.95;
+
+}
+
+.card-trip:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  opacity: 1;
 }
 
 .card-trip > img {
@@ -45,6 +52,19 @@
   top: -20px;
   width: 40px;
 }
+
+.card-trip-category-icon {
+  position: absolute;
+  display:flex;
+  left: 16px;
+  top: -180px;
+  opacity: 0.9;
+  & i {
+  font-size: 40px;
+  text-align:center;
+  color: #007200;
+  margin:auto
+}}
 
 .cards-container a {
   text-decoration: none;

@@ -1,45 +1,64 @@
 <div class="page-wrapper">
   <div class="container">
     <div class="row mt-2" data-controller="calendar">
-      <div class="col-9">
-        <div class="pictures-tool">
-          <div class="small-pics">
-            <%= cl_image_tag(@tool.photo.key, :transformation => {:effect => "blur:300", :opacity => 70})%>
-            <%= cl_image_tag(@tool.photo.key, :transformation => {:effect => "blur:300", :opacity => 70}) %>
-            <%= cl_image_tag @tool.photo.key %>
-          </div>
-          <div class="tool-photo">
-            <%= cl_image_tag(@tool.photo.key, :width => 700, :crop => "fit") %>
-          </div>
+      <div class="tool-items">
+        <div class="col-5">
+              <%= cl_image_tag(@tool.photo.key, :width => 700, :crop => "fit", class: "tool-items-img") %>
+              <%= link_to 'Back to list', tools_path, class: "btn cancel-link" %>
         </div>
-        <div class="text m-4">
-          <h2 class="text-center"><%= @tool.name.capitalize %></h2>
-          <h4><%= @tool.description %></h4>
-          <p>Category: <%= @tool.category %></p>
-          <p>Price per day:</p> <p id="dailyprice"><%= @tool.daily_price %> €</p>
-          <p>Condition: <%= @tool.condition %>/5</p>
-        </div>
-        <%= link_to 'Back to list', tools_path, class: "btn btn-ghost" %>
-      </div>
-      <div class="booking-tool col-3">
-        <h4>Book this <%=@tool.name%></h4>
-        <%= simple_form_for [@tool, @booking] do |f| %>
-          <%= f.input :date_begin, as: :date, html5: true, input_html: {:"data-calendar-target"=> "datestart"} %>
-          <%= f.input :date_end, as: :date, html5: true, input_html: {:"data-calendar-target"=> "dateend"}%>
-          <%= f.submit "Submit", class: "btn btn-ghost" %>
-        </div>
-        <% end %>
-        <div class="simple-calendar">
-        <%= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
-            <%= date %>
-            <% meetings.each do |meeting| %>
-            <div class="meeting">
-            <p> Already Booked</p>
+        <div class="booking-tool col-7">
+          <div class="text m-4">
+            <div class="row booking-info">
+                <h2 class="text-center"><%= @tool.name.capitalize %></h2>
+                <%= cl_image_tag(@user.photo.key, class: "avatar") %>
+                <h4 class="mt-5"><%= @tool.description %></h4>
+                <p>Category: <%= @tool.category %></p>
+                <p>Condition: <%= @tool.condition %>/5</p>
             </div>
-            <% end %>
-        <% end %>
+            <div class="row">
+                <div class="d-flex justify-content-between">
+                  <p id="price">Price per day: <%= @tool.daily_price %> €</p>
+                  <button type="button" class="btn btn-primary btn-modal" data-bs-toggle="modal" data-bs-target="#calendarModal">
+                    Book
+                  </button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="calendarModalLabel">Book this <%=@tool.name%></h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <%= simple_form_for [@tool, @booking] do |f| %>
+                      <%= f.input :date_begin, as: :date, html5: true, input_html: {:"data-calendar-target"=> "datestart"} %>
+                      <%= f.input :date_end, as: :date, html5: true, input_html: {:"data-calendar-target"=> "dateend"}%>
+                      <%= f.submit "Submit", class: "btn btn-ghost" %>
+                    </div>
+                    <% end %>
+
+                  <div class="simple-calendar">
+                    <%= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
+                      <%= date %>
+                      <% meetings.each do |meeting| %>
+                        <div class="meeting">
+                        <p> Already Booked</p>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+
     </div>
   </div>
 </div>

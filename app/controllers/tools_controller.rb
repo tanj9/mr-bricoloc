@@ -23,6 +23,7 @@ class ToolsController < ApplicationController
 
   def show
     @tool = Tool.find(params[:id])
+    @user = current_user
     authorize @tool
     @booking = Booking.new
     # CALENDAR VIEW: Scope your query to the dates being shown:
