@@ -20,8 +20,11 @@ export default class extends Controller {
       // mecanique de mise à jour des cases entre la case de début et de fin
       const startTileNumber = parseInt(this.datestartTarget.value.slice(-2),10);
       const endTileNumber = parseInt(date.slice(-2),10);
+      const Days = endTileNumber - startTileNumber +1;
+      console.log(document.getElementById("dailyprice").innerText.slice(0,2))
+      const totalPrice = Days * parseInt(document.getElementById("dailyprice").innerText, 10);
+      console.log(totalPrice);
       const yearMonth = date.slice(0, 8);
-      console.log(yearMonth);
       for (let step = endTileNumber; step > startTileNumber; step--) {
         const endString = step.toLocaleString('en-US', {
           minimumIntegerDigits: 2,
@@ -29,6 +32,8 @@ export default class extends Controller {
         })
         var id = `tile${yearMonth}${endString}`;
         document.getElementById(id).innerHTML = '<div class="meeting-proposed"><p>Your booking</p></div>' ;
+      // total_price update before submit
+
       }
       // si les 2 champs sont deja remplis : on efface tous les "meeting-proposed" dans les cases et on recommence à start-date
     }else {
