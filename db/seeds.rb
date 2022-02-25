@@ -69,6 +69,7 @@ user.photo.attach(io: file, filename: 'jerome.jpg', content_type: 'image/jpg')
 user.save!
 puts "created user: #{user.first_name}"
 
+
 puts "created #{User.count} users"
 
 puts '2. SEED TOOLS'
@@ -208,7 +209,7 @@ puts "created tool: #{tool.name}"
 user = User.find_by(first_name: 'Jérôme')
 tool = Tool.new(
   name: 'Watering can',
-  category: 'gardening',
+  category: 'garden',
   sub_category: 'handtools',
   daily_price: 3,
   description: 'To keep seedlings and young plants refreshed a watering can with a “rose” (the sprinkler attachment on the end of the watering spout) will distribute water more lightly and evenly.',
@@ -242,7 +243,7 @@ puts "created tool: #{tool.name}"
 user = User.find_by(first_name: 'Jérôme')
 tool = Tool.new(
   name: 'Mower',
-  category: 'gardening',
+  category: 'garden',
   sub_category: 'motorized',
   daily_price: 15,
   description: 'To keep seedlings and young plants refreshed a watering can with a “rose” (the sprinkler attachment on the end of the watering spout) will distribute water more lightly and evenly.',
@@ -310,7 +311,7 @@ puts "created tool: #{tool.name}"
 user = User.find_by(first_name: 'Jérôme')
 tool = Tool.new(
   name: 'Pruning shear',
-  category: 'gardening',
+  category: 'garden',
   sub_category: 'handtools',
   daily_price: 4,
   description: 'Special hand grip designed for left-handed people. Pair of lopping shears with 30- or 45-cm',
