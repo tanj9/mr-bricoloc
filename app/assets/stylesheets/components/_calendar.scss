@@ -9,22 +9,26 @@
 
 .meeting {
   color: white;
-  padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: $green;
   transition: background 0.3s ease;
 }
 
 .meeting-proposed {
   color: white;
-  padding: 8px 24px;
+  text-align: center;
   border-radius: 4px;
-  background: #1EDD88;
+  background: $green;
   transition: background 0.3s ease;
 }
 
+.meeting-proposed p {
+  padding: 10px;
+  margin: 0px;
+}
+
 .meeting:hover {
-  background: #1BCB7F;
+  background: $green;
   color: white;
 }
 
@@ -34,5 +38,5 @@
 }
 
 .simple-calendar td:hover {
-  background: #1BCB7F;
+  background: rgba(0, 114, 0, 0.2);
 }
