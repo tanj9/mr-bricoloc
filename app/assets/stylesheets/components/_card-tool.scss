@@ -12,6 +12,17 @@
   }
 }
 
+.plus {
+  text-align: center;
+}
+
+.plus > img {
+  height: 200px;
+  width: 80% !important;
+  opacity: 0.5;
+  object-fit: cover;
+}
+
 .card-trip > img {
   height: 200px;
   width: 100%;
